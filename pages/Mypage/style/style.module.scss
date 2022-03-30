@@ -1,0 +1,239 @@
+@import "../../../styles/mixin.scss";
+.containerBox {
+  height: 100vh;
+
+  .container {
+    height: calc(100vh - 79px);
+    display: flex;
+    .aside {
+      flex: 3;
+      background: #464242;
+      position: relative;
+      .userInfo {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        max-width: 600px;
+        margin: 0 auto;
+
+        h3 {
+          color: #fff;
+          font-size: 34px;
+          text-align: center;
+          padding: 0 0 50px;
+        }
+        p {
+          background: #fff;
+          font-size: 18px;
+          text-align: center;
+          padding: 7px 0;
+          border-radius: 20px;
+          margin: 0 0 25px;
+        }
+        input {
+          width: 100%;
+          background: #fff;
+          font-size: 18px;
+          text-align: center;
+          padding: 7px 0;
+          border-radius: 20px;
+          margin: 0 0 25px;
+        }
+        .btns {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 50px;
+          button {
+            width: 45%;
+            font-size: 15px;
+            padding: 8px 0;
+            border-radius: 13px;
+            &:nth-child(1) {
+              background: #62a397;
+              &:hover {
+                background: #367e71;
+              }
+            }
+            &:nth-child(2) {
+              background: #4f58a3;
+              &:hover {
+                background: #2937bd;
+              }
+            }
+            color: #fff;
+          }
+        }
+      }
+      .passwordForm {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        max-width: 600px;
+        margin: 0 auto;
+
+        h3 {
+          color: #fff;
+          font-size: 34px;
+          text-align: center;
+          padding: 0 0 50px;
+        }
+        .input_state {
+          text-align: center;
+          &:first-of-type {
+            color: rgb(240, 22, 22);
+          }
+          &:last-of-type {
+            color: rgb(57, 218, 57);
+          }
+        }
+        input {
+          width: 100%;
+          background: #fff;
+          font-size: 18px;
+          text-align: center;
+          padding: 7px 0;
+          border-radius: 20px;
+          margin: 0 0 25px;
+        }
+        .btns {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 50px;
+          button {
+            width: 45%;
+            font-size: 15px;
+            padding: 8px 0;
+            border-radius: 13px;
+            &:nth-child(1) {
+              background: #505bc5;
+              &:hover {
+                background: #2734aa;
+              }
+            }
+            &:nth-child(2) {
+              background: #ee4a4a;
+              &:hover {
+                background: #d32828;
+              }
+            }
+            color: #fff;
+          }
+        }
+      }
+      .modifyForm {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        max-width: 600px;
+        margin: 0 auto;
+
+        h3 {
+          color: #fff;
+          font-size: 34px;
+          text-align: center;
+          padding: 0 0 50px;
+        }
+
+        input {
+          width: 100%;
+          background: #fff;
+          font-size: 18px;
+          text-align: center;
+          padding: 7px 0;
+          border-radius: 20px;
+          margin: 0 0 25px;
+        }
+        .modifyInput {
+          select {
+            width: 100%;
+            background: #fff;
+            font-size: 18px;
+            text-align: center;
+            padding: 7px 0;
+            border-radius: 20px;
+            margin: 0 0 25px;
+          }
+          .addressBtn {
+            background: #4f1919;
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+
+            width: 100%;
+
+            &:hover {
+              background: #a53030;
+            }
+          }
+        }
+        .btns {
+          display: flex;
+          justify-content: space-between;
+          margin-top: 50px;
+          button {
+            width: 45%;
+            font-size: 15px;
+            padding: 8px 0;
+            border-radius: 13px;
+            &:nth-child(1) {
+              background: #505bc5;
+              &:hover {
+                background: #2734aa;
+              }
+            }
+            &:nth-child(2) {
+              background: #ee4a4a;
+              &:hover {
+                background: #d32828;
+              }
+            }
+            color: #fff;
+          }
+        }
+        .addressBox {
+          button {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            background: #000;
+            color: #fff;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 13px;
+          }
+        }
+      }
+    }
+
+    .rightBg {
+      flex: 1.3;
+      background: url("/assets/img/bg/4.jpg");
+      background-size: cover;
+    }
+  }
+}
+
+@include mobile {
+  .container {
+    .rightBg {
+      display: none;
+    }
+  }
+}
+
+@include tablet {
+  .container {
+    .rightBg {
+      display: none;
+    }
+  }
+}
+
+@include desktop {
+}

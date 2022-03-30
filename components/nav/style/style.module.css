@@ -1,0 +1,133 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background: #b9adad;
+  width: 100%;
+  z-index: 10;
+}
+
+.modal .iconXBox {
+  position: absolute;
+  top: 10%;
+  right: 18%;
+  z-index: 11;
+}
+
+.modal .iconXBox .iconX {
+  cursor: pointer;
+}
+
+.modal .modalNav {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.modal .modalNav ul li {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.modal .modalNav ul li a {
+  color: #fff;
+  font-size: 30px;
+}
+
+.modal .modalNav ul li a:hover {
+  color: greenyellow;
+}
+
+.navContainer {
+  border-bottom: 1px solid #c4c4c4;
+  width: 100%;
+}
+
+.navContainer .navWrap {
+  padding: 18px 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 85%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.navContainer .navWrap .navMenu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navContainer .navWrap .navMenu .navTitle {
+  margin-right: 40px;
+  color: #9f9c9c;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.navContainer .navWrap .navMenu .navTitle:hover {
+  color: yellowgreen;
+}
+
+.navContainer .navWrap .navMenu .navLi {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.navContainer .navWrap .navMenu .navLi li {
+  margin: 0 15px;
+}
+
+.navContainer .navWrap .navMenu .navLi li a {
+  color: #9f9c9c;
+  font-size: 20px;
+}
+
+.navContainer .navWrap .navMenu .navLi li a:hover {
+  color: yellowgreen;
+}
+
+.navContainer .navWrap .mainNav .navUserMenu a {
+  margin: 0 15px;
+  color: #9f9c9c;
+  font-size: 20px;
+}
+
+.navContainer .navWrap .mainNav .navUserMenu a:hover {
+  color: yellowgreen;
+}
+
+.navContainer .navWrap .mobileNav {
+  display: none;
+}
+
+@media (min-width: 319px) and (max-width: 757px) {
+  .navContainer .navWrap .navMenu .navLi {
+    display: none;
+  }
+  .navContainer .navWrap .mainNav {
+    display: none;
+  }
+  .navContainer .navWrap .mobileNav {
+    display: block;
+  }
+  .navContainer .navWrap .mobileNav img {
+    cursor: pointer;
+  }
+}
+/*# sourceMappingURL=style.module.css.map */

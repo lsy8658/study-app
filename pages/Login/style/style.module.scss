@@ -1,0 +1,101 @@
+@import "../../../styles/mixin.scss";
+.container {
+  background: url("/assets/img/bg/1.jpg");
+  height: 100vh;
+  background-size: cover;
+  position: relative;
+  .wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    margin: 0 auto;
+
+    h1 {
+      color: #fff;
+      padding: 0px 0 30px;
+      text-align: center;
+      font-size: 50px;
+    }
+    .loginFormBox {
+      width: 90%;
+      margin: 0 auto;
+      background: #bcb0b0;
+      height: 35vh;
+      max-height: 400px;
+      max-width: 400px;
+      min-height: 300px;
+      border-radius: 20px;
+      box-sizing: border-box;
+      padding: 60px 0;
+      .loginForm {
+        .loginInput {
+          width: 100%;
+          text-align: center;
+          input {
+            width: 90%;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 5px 0;
+            border-radius: 20px;
+          }
+        }
+        .loginButton {
+          text-align: center;
+          button {
+            width: 90%;
+            font-size: 20px;
+            background: #000;
+            color: #fff;
+            padding: 8px 0;
+            border-radius: 20px;
+            &:hover {
+              color: yellow;
+            }
+          }
+        }
+      }
+      .registerButton {
+        text-align: center;
+        margin-top: 16px;
+
+        a {
+          color: #fff;
+          font-size: 18px;
+          margin: 0 10px;
+          &:hover {
+            color: yellow;
+          }
+        }
+      }
+    }
+  }
+}
+@include mobile {
+  .container {
+    .wrap {
+      h1 {
+        font-size: 40px;
+      }
+      .loginFormBox {
+        height: 50vh;
+        max-height: 300px;
+        .loginForm {
+          .loginInput {
+            input {
+              margin-bottom: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include tablet {
+}
+
+@include desktop {
+}

@@ -1,0 +1,165 @@
+@import "../../../styles/mixin.scss";
+.container {
+  display: flex;
+  width: 85%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 100px 0 0;
+  .aside {
+    flex: 1;
+    h1,
+    h2 {
+      text-align: center;
+      color: #9f9c9c;
+    }
+    h1 {
+      margin-bottom: 30px;
+    }
+    h2 {
+      margin-bottom: 100px;
+    }
+    .studyRooms {
+      width: 80%;
+      margin: 50px auto 0;
+
+      .studyRoom {
+        margin-bottom: 30px;
+        background: #fceaea;
+        display: flex;
+        border-radius: 13px;
+        overflow: hidden;
+        .studyType {
+          background: #f19c9c;
+          padding: 40px 10px;
+          color: #fff;
+          display: flex;
+          align-items: center;
+        }
+        .studyInfo {
+          width: 90%;
+          box-sizing: border-box;
+          padding: 15px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          .studyTitle {
+            margin-bottom: 15px;
+            p {
+              word-break: break-all;
+              overflow: hidden;
+              width: 100%;
+              text-overflow: ellipsis;
+              text-align: center;
+              font-size: 15px;
+              color: #6f6d6d;
+            }
+          }
+          .studyMember {
+            p {
+              text-align: center;
+
+              font-weight: bold;
+              span {
+                color: #86aa76;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .mainBox {
+    flex: 1;
+
+    .mainBg {
+      width: 80%;
+      margin: 0 auto;
+      max-width: 450px;
+      max-height: 300px;
+      object-fit: cover;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+@include mobile {
+  .container {
+    display: flex;
+    width: 85%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 80px 0 0;
+    .aside {
+      flex: 1;
+      h1,
+      h2 {
+        text-align: center;
+        color: #9f9c9c;
+      }
+      h1 {
+        margin-bottom: 30px;
+      }
+      h2 {
+        margin-bottom: 30px;
+      }
+      .studyRooms {
+        width: 80%;
+        margin: 50px auto 0;
+
+        .studyRoom {
+          margin-bottom: 30px;
+          background: #fceaea;
+          display: flex;
+          border-radius: 13px;
+          overflow: hidden;
+        }
+      }
+    }
+    .mainBox {
+      display: none;
+    }
+  }
+}
+
+@include tablet {
+  .container {
+    display: flex;
+    width: 85%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 100px 0 0;
+    .aside {
+      flex: 1;
+      h1,
+      h2 {
+        text-align: center;
+        color: #9f9c9c;
+      }
+      h1 {
+        margin-bottom: 30px;
+      }
+      h2 {
+        margin-bottom: 100px;
+      }
+      .studyRooms {
+        width: 80%;
+        margin: 50px auto 0;
+
+        .studyRoom {
+          margin-bottom: 30px;
+          background: #fceaea;
+          display: flex;
+          border-radius: 13px;
+          overflow: hidden;
+        }
+      }
+    }
+    .mainBox {
+      display: none;
+    }
+  }
+}
+
+@include desktop {
+}
