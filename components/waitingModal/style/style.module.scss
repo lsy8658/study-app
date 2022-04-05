@@ -10,7 +10,7 @@
   max-width: 500px;
   height: auto;
   box-sizing: border-box;
-  padding: 30px;
+  padding: 25px;
   border-radius: 18px;
   .xicon {
     position: absolute;
@@ -35,18 +35,19 @@
       text-overflow: ellipsis;
       overflow: hidden;
     }
-    .gradeSelect {
-      background: #fff;
-      font-size: 18px;
-      padding: 5px 20px;
-      border-radius: 18px;
-      width: 20%;
-    }
 
     .btn1 {
-      width: 20%;
+      display: flex;
+      justify-content: space-between;
+      width: 35%;
       button {
-        background: #5f6ffc;
+        width: 48%;
+        &:first-of-type {
+          background: #1f7523;
+        }
+        &:last-of-type {
+          background: #fc5f5f;
+        }
       }
     }
     .btn2 {
@@ -57,9 +58,10 @@
     }
     button {
       color: #fff;
-      font-size: 18px;
-      padding: 5px 20px;
+      font-size: 16px;
+      padding: 8px 15px;
       border-radius: 15px;
+      margin: 0 5px;
     }
   }
 }

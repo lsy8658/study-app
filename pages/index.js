@@ -3,9 +3,9 @@ import Home from "./Home/index";
 import { connect } from "react-redux";
 import { useEffect } from "react";
 const index = ({ user }) => {
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
+  // useEffect(() => {
+  //   console.log(user);
+  // }, [user]);
 
   return (
     <div>

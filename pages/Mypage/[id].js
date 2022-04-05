@@ -4,21 +4,40 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import DaumPostcode from "react-daum-postcode";
 import Seo from "../../components/Seo";
-const index = () => {
+import { connect } from "react-redux";
+import { useCookies } from "react-cookie";
+const index = ({ data, params }) => {
+  console.log(data);
+  console.log(params);
+
+  const [cookies, setCookie, removeCookie] = useCookies(["accessToken"]);
   const [password, setPassword] = useState(""); //비밀번호
   const [pwCheck, setPwCheck] = useState(""); //비밀번호 재확인
   const [infoDisplay, setInfoDisplay] = useState(null); //비밀번호 일치확인 box
   const [modal, setModal] = useState("none"); //집 주소 검색
-  const [input, setInput] = useState({
-    email: "",
-    password: "",
-    name: "",
-    developer: "웹 디자인",
-  });
+
   const [myPage, setMyPage] = useState(true);
   const [pwModify, setPwModify] = useState(false);
   const [infoModify, setInfoModify] = useState(false);
-  const [address, setAddress] = useState("");
+
+  const [config, setConfig] = useState();
+  console.log(password);
+  console.log(pwCheck);
+  console.log(cookies);
+
+  useEffect(() => {
+    if (cookies.accessToken) {
+      const accessToken = cookies.accessToken.user;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      };
+      setConfig(config);
+    }
+  }, [cookies.accessToken]);
+
+  //-------------비밀번호 체크---------------
   useEffect(() => {
     if (password !== "" && pwCheck !== "") {
       if (password === pwCheck) {
@@ -30,15 +49,48 @@ const index = () => {
       return setInfoDisplay(null);
     }
   }, [password, pwCheck]);
-  //-------------비밀번호 체크---------------
-  const passwordHandle = (e) => {
+  //-------------------------------------------
+  //----------------비밀번호 변경--------------
+
+  const passwordHandle = async (e) => {
     e.preventDefault();
+    const userId = params.id;
     if (password !== pwCheck) {
       alert("암호를 확인해주세요.");
       return setInfoDisplay(true);
     }
+
+    if (cookies.accessToken) {
+      try {
+        console.log(userId);
+        const res = await axios.put(
+          `http://localhost:8080/api/user/password/${userId}`,
+          { password: password },
+          config
+        );
+        setMyPage(true);
+        setInfoModify(false);
+        setPwModify(false);
+        console.log(res);
+      } catch (err) {
+        alert("토큰만료");
+        console.log(err);
+      }
+    }
   };
-  //-------------비밀번호 변경---------------
+
+  //-------------------------------------------
+  const [address, setAddress] = useState("");
+  const [input, setInput] = useState({
+    name: "",
+    developer: "웹 디자인",
+  });
+  const newUser = {
+    name: input.name,
+    address: address,
+    developer: input.developer,
+  };
+  //----------------우편주소---------------------------
   const handleComplete = (data) => {
     let fullAddress = data.address;
     let extraAddress = "";
@@ -70,11 +122,36 @@ const index = () => {
     maxWidth: "500px",
   };
 
+  //--------------------------------------------------
+
+  //------------------정보수정-------------------------
   const inputHandle = (e) => {
     const { name, value } = e.target;
     setInput({ ...input, [name]: value });
   };
+  //-------------------------------------------
+  const formHandle = async (e) => {
+    e.preventDefault();
 
+    const userId = params.id;
+
+    if (input.name !== "" && input.address !== "" && input.developer !== "") {
+      try {
+        const res = await axios.put(
+          `http://localhost:8080/api/user/modify/${userId}`,
+          newUser,
+          config
+        );
+        console.log(newUser);
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
+    } else {
+      alert("정보를 전부 입력해주세요.");
+      return;
+    }
+  };
   return (
     <div className={styles.containerBox}>
       <Seo title={"Studyapp - Mypage"} />
@@ -86,10 +163,10 @@ const index = () => {
             style={{ display: myPage ? "block" : "none" }}
           >
             <h3>My Page</h3>
-            <p>dltjddbns@naver.com</p>
-            <p>신은제</p>
-            <p>웹 디자인</p>
-            <p>서울 000 000</p>
+            <p>{data.email}</p>
+            <p>{data.name}</p>
+            <p>{data.developer}</p>
+            <p>{data.address}</p>
             <div className={styles.btns}>
               <button
                 onClick={() => {
@@ -190,15 +267,21 @@ const index = () => {
               </button>
             </div>
             <h3>정보 수정</h3>
-            <form onSubmit={passwordHandle}>
-              <input type="password" placeholder="email" onChange={(e) => {}} />
-              <input type="password" placeholder="이름" onChange={(e) => {}} />
+            <form onSubmit={formHandle}>
+              <input
+                type="text"
+                placeholder={data.name}
+                value={input.name}
+                name="name"
+                onChange={inputHandle}
+              />
               <div className={styles.modifyInput}>
                 <select
                   name="developer"
                   onChange={inputHandle}
                   className={styles.selectInput}
                 >
+                  <option>{data.developer}</option>
                   <option>웹 디자인</option>
                   <option>웹 퍼블리셔</option>
                   <option>프론트엔드</option>
@@ -224,7 +307,8 @@ const index = () => {
               <div className={styles.btns}>
                 <button type="submit">수정하기</button>
                 <button
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
                     setMyPage(true);
                     setInfoModify(false);
                     setPwModify(false);
@@ -243,4 +327,20 @@ const index = () => {
   );
 };
 
-export default index;
+const getReducerState = ({ userReducer }) => {
+  return {
+    state: userReducer,
+  };
+};
+
+export default connect(getReducerState)(index);
+
+export const getServerSideProps = async ({ params }) => {
+  console.log(params);
+
+  const res = await axios.get(`http://localhost:8080/api/user/${params.id}`);
+  const data = res.data;
+  return {
+    props: { data: data, params },
+  };
+};

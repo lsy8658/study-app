@@ -2,23 +2,24 @@ import React, { useEffect, useState } from "react";
 import Nav from "../../components/nav/Nav";
 import styles from "./style/style.module.css";
 import Seo from "../../components/Seo";
-import ProjectModal from "../../components/projectModal/ProjectModal";
+import StudyModal from "../../components/studyModal/StudyModal";
+import GradeModal from "../../components/gradeModal/GradeModal";
 import axios from "axios";
 const index = () => {
-  const [getStudy, setGetStudy] = useState([]);
-  const [data, setData] = useState();
   const [modal, setModal] = useState(false);
+  const [getStudy, setGetStudy] = useState([]);
 
+  const [data, setData] = useState();
   const [search, setSearch] = useState("");
+  const [newGetStudy, setNewGetStudy] = useState([]);
   useEffect(() => {
     const getStudys = async () => {
-      const res = await axios.get(
-        "http://localhost:8080/api/project/Projecting"
-      );
+      const res = await axios.get("http://localhost:8080/api/study/Studying");
       setGetStudy(res.data);
     };
     getStudys();
   }, []);
+
   const searchForm = async (e) => {
     e.preventDefault();
     const text = {
@@ -27,7 +28,7 @@ const index = () => {
     if (search !== "") {
       try {
         const res = await axios.post(
-          "http://localhost:8080/api/project/search",
+          "http://localhost:8080/api/study/search",
           text
         );
         setGetStudy(res.data);
@@ -38,9 +39,7 @@ const index = () => {
       }
     } else {
       try {
-        const res = await axios.get(
-          "http://localhost:8080/api/project/Projecting"
-        );
+        const res = await axios.get("http://localhost:8080/api/study/Studying");
         setGetStudy(res.data);
         console.log(res.data);
       } catch (err) {
@@ -50,12 +49,14 @@ const index = () => {
   };
   return (
     <>
+      {/* <GradeModal /> */}
+
       <div className={styles.containerBox}>
         <Seo title={"Studyapp - Project"} />
         <Nav />
 
         <div className={styles.container}>
-          <h1>Project</h1>
+          <h1>Study</h1>
           <div className={styles.searchBox}>
             <form className={styles.searchForm} onSubmit={searchForm}>
               <input
@@ -66,10 +67,11 @@ const index = () => {
                 placeholder="전체보기는 search만 눌러주세요."
                 value={search}
               />
-              <button>Search</button>
+              <button type="submit">Search</button>
             </form>
           </div>
-          <ProjectModal modal={modal} setModal={setModal} data={data} />
+          <StudyModal modal={modal} setModal={setModal} data={data} />
+          {/* <p style={{ color: "#9F9C9C" }}>Scroll 해주세요.</p> */}
           <div className={styles.listScroll}>
             <div className={styles.listBox}>
               {getStudy ? (

@@ -4,8 +4,8 @@ export const login_start = () => {
   return { type: LOGIN_START };
 };
 
-export const login_success = (user) => {
-  return { type: LOGIN_SUCCESS, payload: user };
+export const login_success = (user, decode) => {
+  return { type: LOGIN_SUCCESS, payload: { user, decode } };
 };
 
 export const login_failure = () => {

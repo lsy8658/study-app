@@ -12,8 +12,10 @@ import {
   login_out,
 } from "../../redux";
 import jwt_decode from "jwt-decode";
-
+import { useCookies } from "react-cookie";
 const index = ({ state, login_start, login_success, login_failure }) => {
+  let isFetching = state.loading;
+  const [cookies, setCookie, removeCookie] = useCookies();
   const [input, setInput] = useState({
     email: "",
     password: "",
@@ -24,18 +26,23 @@ const index = ({ state, login_start, login_success, login_failure }) => {
     login_start();
     try {
       const res = await axios.post(
-        "https://sy-study-app.herokuapp.com/api/auth/login",
+        "http://localhost:8080/api/auth/login",
         input
       );
-      console.log(jwt_decode(res.data.accessToken));
-      login_success({ user: jwt_decode(res.data.accessToken) });
 
+      login_success({
+        user: res.data.accessToken,
+        decode: jwt_decode(res.data.accessToken),
+      });
+      if (res.data.refreshToken) {
+        setCookie("refreshToken", res.data.refreshToken);
+      }
       setInput({
         email: "",
         password: "",
       });
-
-      // Router.push("/");
+      console.log(res);
+      Router.push("/");
     } catch (err) {
       login_failure();
       console.log(err);
@@ -72,10 +79,14 @@ const index = ({ state, login_start, login_success, login_failure }) => {
                   onChange={inputHandle}
                 />
               </div>
+
               <div className={styles.loginButton}>
-                <button type="submit">Sign In</button>
+                <button type="submit">
+                  {isFetching ? "loading" : "Sign In"}
+                </button>
               </div>
             </form>
+
             <div className={styles.registerButton}>
               <Link href={"/Register"}>Register</Link>
               <Link href={"/"}>Home</Link>

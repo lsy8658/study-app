@@ -74,7 +74,7 @@
     .mainBg {
       width: 80%;
       margin: 0 auto;
-      max-width: 450px;
+      max-width: 500px;
       max-height: 300px;
       object-fit: cover;
       img {
@@ -86,7 +86,7 @@
 @include mobile {
   .container {
     display: flex;
-    width: 85%;
+    width: 90%;
     margin: 0 auto;
     box-sizing: border-box;
     padding: 80px 0 0;

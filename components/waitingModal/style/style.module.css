@@ -11,7 +11,7 @@
   height: auto;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 30px;
+  padding: 25px;
   border-radius: 18px;
 }
 
@@ -49,20 +49,26 @@
   overflow: hidden;
 }
 
-.gradeBox .gradeForm .gradeSelect {
-  background: #fff;
-  font-size: 18px;
-  padding: 5px 20px;
-  border-radius: 18px;
-  width: 20%;
-}
-
 .gradeBox .gradeForm .btn1 {
-  width: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 35%;
 }
 
 .gradeBox .gradeForm .btn1 button {
-  background: #5f6ffc;
+  width: 48%;
+}
+
+.gradeBox .gradeForm .btn1 button:first-of-type {
+  background: #1f7523;
+}
+
+.gradeBox .gradeForm .btn1 button:last-of-type {
+  background: #fc5f5f;
 }
 
 .gradeBox .gradeForm .btn2 {
@@ -75,8 +81,9 @@
 
 .gradeBox .gradeForm button {
   color: #fff;
-  font-size: 18px;
-  padding: 5px 20px;
+  font-size: 16px;
+  padding: 8px 15px;
   border-radius: 15px;
+  margin: 0 5px;
 }
 /*# sourceMappingURL=style.module.css.map */

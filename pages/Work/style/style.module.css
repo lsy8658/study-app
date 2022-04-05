@@ -1,0 +1,332 @@
+.modalBg {
+  position: fixed;
+  background: rgba(184, 183, 182, 0.5);
+  width: 100%;
+  height: 100vh;
+}
+
+.container {
+  height: 100vh;
+}
+
+.container .workContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: calc(100% - 75px);
+}
+
+.container .workContainer .aside {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+}
+
+.container .workContainer .aside .contents {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.container .workContainer .aside .btns {
+  width: 100%;
+  margin: 50px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .workContainer .aside .btns .menuBtn {
+  width: 80%;
+}
+
+.container .workContainer .aside .btns .menuBtn .btn {
+  width: 40%;
+  max-width: 150px;
+  font-size: 16px;
+  background: #d4d7d9;
+  color: #979191;
+  padding: 8px;
+  border-radius: 18px;
+  text-align: center;
+  margin: 5px;
+}
+
+.container .workContainer .aside .btns .menuBtn .active {
+  background: #5b5e61 !important;
+  color: #fff !important;
+}
+
+.container .workContainer .aside .btns .createBtn {
+  width: 40%;
+  max-width: 150px;
+}
+
+.container .workContainer .aside .btns .createBtn a {
+  text-align: center;
+  display: inline-block;
+  background: #3e479d;
+  color: #fff;
+  padding: 8px;
+  border-radius: 18px;
+  font-size: 16px;
+  width: 100%;
+}
+
+.container .workContainer .aside .listCon .listWrap h2 {
+  color: #9f9c9c;
+  margin-bottom: 30px;
+}
+
+.container .workContainer .aside .listCon .listWrap .listBox {
+  height: auto;
+  max-height: 30vh;
+  overflow-y: scroll;
+}
+
+.container .workContainer .aside .listCon .listWrap .listBox::-webkit-scrollbar {
+  width: 10px;
+}
+
+.container .workContainer .aside .listCon .listWrap .listBox::-webkit-scrollbar-track {
+  background-color: #dbdedb;
+}
+
+.container .workContainer .aside .listCon .listWrap .listBox::-webkit-scrollbar-thumb {
+  background: #a5d7b0;
+  -webkit-box-shadow: inset 0 0 6px rgba(46, 169, 152, 0.3);
+          box-shadow: inset 0 0 6px rgba(46, 169, 152, 0.3);
+}
+
+.container .workContainer .aside .listCon .listWrap .listBox .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #d7f3d3;
+  width: 100%;
+  border-radius: 13px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.container .workContainer .aside .listCon .listWrap .listBox .item .waiting {
+  width: 100px;
+  color: #fff;
+  background: #a5d7b0;
+  text-align: center;
+  font-size: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .workContainer .aside .listCon .listWrap .listBox .item .waiting p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 5px;
+  text-align: center;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container .workContainer .aside .listCon .listWrap .listBox .item .waiting p span {
+  margin-left: 5px;
+}
+
+.container .workContainer .aside .listCon .listWrap .listBox .item .desc {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #5e5a5a;
+  padding: 20px 0;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.container .workContainer .aside .listCon .listWrap .listBox .item .desc p {
+  width: 200px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.container .workContainer .aside .listCon .listWrap .listBox .item .desc .btns1 {
+  text-align: center;
+  color: #59595a;
+}
+
+.container .workContainer .aside .listCon .listWrap .listBox .item .desc .btns1 button {
+  font-size: 14px;
+  margin: 5px 20px;
+}
+
+.container .workContainer .aside .listCon .listWrap .listBox .item .desc button {
+  text-align: center;
+  color: #59595a;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.container .workContainer .aside .listCon .listWrap .listBox .item .desc button:hover {
+  color: #1f30c0;
+}
+
+.container .workContainer .aside .listCon .listWrap .listBox .loading {
+  text-align: center;
+  font-size: 20px;
+  color: #fff;
+  background: #424141;
+  padding: 5px 0;
+  border-radius: 18px;
+}
+
+.container .workContainer .aside .listCon .listWrap .studyListBox {
+  height: auto;
+  max-height: 30vh;
+  overflow-y: scroll;
+}
+
+.container .workContainer .aside .listCon .listWrap .studyListBox::-webkit-scrollbar {
+  width: 10px;
+}
+
+.container .workContainer .aside .listCon .listWrap .studyListBox::-webkit-scrollbar-track {
+  background-color: #dbdedb;
+}
+
+.container .workContainer .aside .listCon .listWrap .studyListBox::-webkit-scrollbar-thumb {
+  background: #c9c2f8;
+  -webkit-box-shadow: inset 0 0 6px rgba(46, 169, 152, 0.3);
+          box-shadow: inset 0 0 6px rgba(46, 169, 152, 0.3);
+}
+
+.container .workContainer .aside .listCon .listWrap .studyListBox .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #f0eafc;
+  width: 100%;
+  border-radius: 13px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.container .workContainer .aside .listCon .listWrap .studyListBox .item .waiting {
+  width: 100px;
+  color: #fff;
+  background: #c9c2f8;
+  text-align: center;
+  font-size: 18px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .workContainer .aside .listCon .listWrap .studyListBox .item .waiting p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 5px;
+  text-align: center;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container .workContainer .aside .listCon .listWrap .studyListBox .item .waiting p span {
+  margin-left: 5px;
+}
+
+.container .workContainer .aside .listCon .listWrap .studyListBox .item .desc {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #5e5a5a;
+  padding: 20px 0;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.container .workContainer .aside .listCon .listWrap .studyListBox .item .desc p {
+  width: 200px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.container .workContainer .aside .listCon .listWrap .studyListBox .item .desc .btns1 {
+  text-align: center;
+  color: #59595a;
+}
+
+.container .workContainer .aside .listCon .listWrap .studyListBox .item .desc .btns1 button {
+  font-size: 14px;
+  margin: 0 20px;
+}
+
+.container .workContainer .aside .listCon .listWrap .studyListBox .item .desc button {
+  text-align: center;
+  color: #59595a;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.container .workContainer .aside .listCon .listWrap .studyListBox .item .desc button:hover {
+  color: #1f30c0;
+}
+
+.container .workContainer .sideBg {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background: url("/assets/img/bg/5.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 319px) and (max-width: 757px) {
+  .workContainer .sideBg {
+    display: none;
+  }
+}
+/*# sourceMappingURL=style.module.css.map */

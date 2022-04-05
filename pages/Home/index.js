@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Nav from "../../components/nav/Nav";
 import styles from "./style/style.module.css";
 import Image from "next/image";
+import axios from "axios";
 
 const index = () => {
+  const [newProject, setNewProject] = useState([]);
+  const [newStudy, setNewStudy] = useState([]);
+  useEffect(() => {
+    const newPro = async () => {
+      try {
+        const res = await axios.get(
+          "http://localhost:8080/api/project/newProject"
+        );
+        setNewProject(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    newPro();
+    const newStu = async () => {
+      try {
+        const res = await axios.get("http://localhost:8080/api/study/newStudy");
+        setNewStudy(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    newStu();
+  }, []);
+  console.log(newProject);
   return (
     <>
       <Nav />
@@ -12,36 +38,60 @@ const index = () => {
           <h1>Project &#38; Study</h1>
           <h2>오늘의 스터디</h2>
           <div className={styles.studyRooms}>
-            <div className={styles.studyRoom}>
-              <div className={styles.studyType}>
-                <span>Project</span>
-              </div>
-              <div className={styles.studyInfo}>
-                <div className={styles.studyTitle}>
-                  <p>새로운 sns 작업</p>
-                </div>
-                <div className={styles.studyMember}>
-                  <p>
-                    <span>3 / 4</span>
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className={styles.studyRoom}>
-              <div className={styles.studyType}>
-                <span>Project</span>
-              </div>
-              <div className={styles.studyInfo}>
-                <div className={styles.studyTitle}>
-                  <p>토이프로젝트 같이하실 분?</p>
-                </div>
-                <div className={styles.studyMember}>
-                  <p>
-                    <span>3 / 4</span>
-                  </p>
-                </div>
-              </div>
-            </div>
+            {newProject &&
+              newProject.map((item, index) => {
+                const members = item.member_id.filter((member) => {
+                  return member.waiting === true;
+                });
+                console.log(members);
+                return (
+                  <div className={styles.studyRoom} key={index}>
+                    <div className={styles.studyType}>
+                      <span>Project</span>
+                    </div>
+                    <div className={styles.studyInfo}>
+                      <div className={styles.studyTitle}>
+                        <p>{item.title}</p>
+                      </div>
+                      <div className={styles.studyMember}>
+                        <p>
+                          <span>
+                            {members.length}/ {item.headCount}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+          </div>
+          <div className={styles.studyRooms}>
+            {newStudy &&
+              newStudy.map((item, index) => {
+                const members = item.member_id.filter((member) => {
+                  return member.waiting === true;
+                });
+                console.log(members);
+                return (
+                  <div className={styles.studyRoom} key={index}>
+                    <div className={styles.studyType}>
+                      <span>Study</span>
+                    </div>
+                    <div className={styles.studyInfo}>
+                      <div className={styles.studyTitle}>
+                        <p>{item.title}</p>
+                      </div>
+                      <div className={styles.studyMember}>
+                        <p>
+                          <span>
+                            {members.length}/ {item.headCount}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
           </div>
         </div>
         <div className={styles.mainBox}>

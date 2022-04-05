@@ -1,0 +1,313 @@
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: calc(100vh - 75px);
+}
+
+.container .aside {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  text-align: center;
+  background: #c4c4c4;
+}
+
+.container .aside h2 {
+  color: #fff;
+  font-size: 36px;
+  font-weight: normal;
+  margin: 70px 0 70px;
+}
+
+.container .aside .asideWrap {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.container .aside .asideWrap .createForm .createInputs {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.container .aside .asideWrap .createForm .createInputs .inputBox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 50%;
+}
+
+.container .aside .asideWrap .createForm .createInputs .inputBox label {
+  width: 38%;
+  margin-right: 5px;
+  text-align: center;
+}
+
+.container .aside .asideWrap .createForm .createInputs .inputBox .selectBox {
+  background: #fff;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  width: 62%;
+  text-align: center;
+}
+
+.container .aside .asideWrap .createForm .createInputs .inputBox1 {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .aside .asideWrap .createForm .createInputs .inputBox1 label {
+  width: 20%;
+  margin-right: 5px;
+  text-align: center;
+}
+
+.container .aside .asideWrap .createForm .createInputs .inputBox1 .input {
+  width: 80%;
+  font-size: 18px;
+  border-radius: 18px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 5px;
+  text-align: center;
+}
+
+.container .aside .asideWrap .createForm .createInputs .inputBox1 .textarea {
+  width: 80% !important;
+  border: none;
+  border-radius: 18px;
+  height: 50px;
+  max-height: 50px;
+  outline: none;
+  text-indent: 15px;
+}
+
+.container .aside .asideWrap .createForm .createInputs .inputBox2 {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .aside .asideWrap .createForm .createInputs .inputBox2 label {
+  width: 20%;
+  margin-right: 5px;
+  text-align: center;
+}
+
+.container .aside .asideWrap .createForm .createInputs .inputBox2 .input {
+  width: 30%;
+  font-size: 18px;
+  border-radius: 18px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 5px;
+  text-align: center;
+}
+
+.container .aside .asideWrap .createForm .createInputs .inputBox2 .selectBox {
+  background: #fff;
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  width: 30%;
+  text-align: center;
+}
+
+.container .aside .asideWrap .createForm .btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 50px;
+}
+
+.container .aside .asideWrap .createForm .btns button {
+  width: 45%;
+  color: #fff;
+  padding: 10px 0;
+  border-radius: 20px;
+}
+
+.container .aside .asideWrap .createForm .btns button:first-of-type {
+  background: #62a397;
+}
+
+.container .aside .asideWrap .createForm .btns button:first-of-type:hover {
+  background: #6dc2b2;
+}
+
+.container .aside .asideWrap .createForm .btns button:last-of-type {
+  background: #f07a7a;
+}
+
+.container .aside .asideWrap .createForm .btns button:last-of-type:hover {
+  background: #fc5f5f;
+}
+
+.container .sideBg {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  background: url("/assets/img/bg/2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 319px) and (max-width: 757px) {
+  .container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: calc(100vh - 75px);
+  }
+  .container .aside {
+    -webkit-box-flex: 2;
+        -ms-flex: 2;
+            flex: 2;
+    text-align: center;
+    background: #c4c4c4;
+  }
+  .container .aside h2 {
+    color: #fff;
+    font-size: 36px;
+    font-weight: normal;
+    margin: 40px 0 40px;
+  }
+  .container .aside .asideWrap {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 700px;
+  }
+  .container .aside .asideWrap .createForm .createInputs {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  .container .aside .asideWrap .createForm .createInputs .inputBox {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    width: 50%;
+  }
+  .container .aside .asideWrap .createForm .createInputs .inputBox label {
+    width: 38%;
+    margin-right: 5px;
+    text-align: center;
+  }
+  .container .aside .asideWrap .createForm .createInputs .inputBox .selectBox {
+    background: #fff;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 20px;
+    width: 62%;
+    text-align: center;
+  }
+  .container .aside .asideWrap .createForm .createInputs .inputBox1 {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .container .aside .asideWrap .createForm .createInputs .inputBox1 label {
+    width: 20%;
+    margin-right: 5px;
+    text-align: center;
+  }
+  .container .aside .asideWrap .createForm .createInputs .inputBox1 .input {
+    width: 80%;
+    font-size: 18px;
+    border-radius: 18px;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    padding: 5px;
+    text-align: center;
+  }
+  .container .aside .asideWrap .createForm .createInputs .inputBox1 .textarea {
+    width: 80% !important;
+    border: none;
+    border-radius: 18px;
+    height: 50px;
+    max-height: 50px;
+    outline: none;
+    text-indent: 15px;
+  }
+  .container .aside .asideWrap .createForm .btns {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    margin-top: 50px;
+  }
+  .container .aside .asideWrap .createForm .btns button {
+    width: 45%;
+    color: #fff;
+    padding: 10px 0;
+    border-radius: 20px;
+  }
+  .container .aside .asideWrap .createForm .btns button:first-of-type {
+    background: #62a397;
+  }
+  .container .aside .asideWrap .createForm .btns button:first-of-type:hover {
+    background: #6dc2b2;
+  }
+  .container .aside .asideWrap .createForm .btns button:last-of-type {
+    background: #f07a7a;
+  }
+  .container .aside .asideWrap .createForm .btns button:last-of-type:hover {
+    background: #fc5f5f;
+  }
+  .container .sideBg {
+    display: none;
+  }
+}
+/*# sourceMappingURL=style.module.css.map */

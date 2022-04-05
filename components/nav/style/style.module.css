@@ -6,6 +6,7 @@
   background: #b9adad;
   width: 100%;
   z-index: 10;
+  z-index: 999;
 }
 
 .modal .iconXBox {
@@ -25,6 +26,7 @@
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  z-index: 999;
 }
 
 .modal .modalNav ul li {
@@ -100,6 +102,12 @@
 
 .navContainer .navWrap .navMenu .navLi li a:hover {
   color: yellowgreen;
+}
+
+.navContainer .navWrap .mainNav .navUserMenu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .navContainer .navWrap .mainNav .navUserMenu a {

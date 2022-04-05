@@ -1,10 +1,65 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import Link from "next/link";
 import styles from "./style/style.module.css";
 import Image from "next/image";
-const Nav = () => {
-  const [modal, setModal] = useState(false);
+import { useCookies } from "react-cookie";
+import axios from "axios";
 
+import { connect } from "react-redux";
+import { login_out } from "../../redux/user/action";
+const Nav = ({ state, login_out }) => {
+  const [cookies, setCookie, removeCookie] = useCookies(["accessToken"]);
+  const [modal, setModal] = useState(false);
+  const [user, setUser] = useState();
+  const [token, setToken] = useState();
+
+  const [getUser, setGetUser] = useState();
+  let cookie = cookies;
+  // ---------------------------------------------
+
+  useEffect(() => {
+    let userState = state.user;
+    let decodeState = state.user;
+    if (
+      userState !== undefined &&
+      decodeState !== undefined &&
+      cookie.accessToken
+    ) {
+      setToken(userState.user);
+      setUser(decodeState.decode);
+    }
+  }, [cookie.accessToken, user]);
+  // console.log(cookie.accessToken && cookie.accessToken.decode.email);
+  // ---------user 값 가져와서 menu설정-------------
+
+  useEffect(() => {
+    const getUserFun = async () => {
+      if (cookie.accessToken) {
+        const email = cookie.accessToken.decode.email;
+
+        try {
+          const userId = await axios.post(
+            "http://localhost:8080/api/user/getUser",
+            {
+              email,
+            }
+          );
+          setGetUser(userId.data[0]._id);
+
+          // const res = await axios.post();
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    };
+    getUserFun();
+  }, [cookie.accessToken]);
+  // console.log(getUser);
+  // headers: {
+  //   authorization: `Bearer ${cookies.accessToken}`,
+  // },
+
+  // ---------login user,cookie 정보 가져오기-------------
   return (
     <>
       <div
@@ -26,21 +81,38 @@ const Nav = () => {
 
         <div className={styles.modalNav}>
           <ul>
+            {cookie.accessToken !== undefined && (
+              <li>
+                <Link href={`/Mypage/${getUser}`}>MY PAGE</Link>
+              </li>
+            )}
+
             <li>
-              <Link href={"/"}>MY PAGE</Link>
+              <Link href={"/Project"}>PROJECT</Link>
             </li>
             <li>
-              <Link href={"/"}>PROJECT</Link>
+              <Link href={"/Study"}>STUDY</Link>
             </li>
-            <li>
-              <Link href={"/"}>STUDY</Link>
-            </li>
-            <li>
-              <Link href={"/"}>WORK</Link>
-            </li>
-            <li>
-              <Link href={"/"}>LOGOUT</Link>
-            </li>
+            {cookie.accessToken !== undefined && (
+              <li>
+                <Link href={"/Work"}>WORK</Link>
+              </li>
+            )}
+            {cookie.accessToken !== undefined ? (
+              <li
+                onClick={() => {
+                  removeCookie("accessToken");
+                  login_out();
+                  setUser("");
+                }}
+              >
+                <Link href={"/"}>Logout</Link>
+              </li>
+            ) : (
+              <li>
+                <Link href={"/Login"}>LOGIN</Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>
@@ -58,18 +130,32 @@ const Nav = () => {
                 <Link href={"/Project"}>Project</Link>
               </li>
               <li>
-                <Link href={"/"}>Work</Link>
+                <Link href={"/Work"}>Work</Link>
               </li>
             </ul>
           </div>
           <div className={styles.mainNav}>
             <div className={styles.navUserMenu}>
-              <Link href={"/Mypage"}>My page</Link>
-              <Link href={"/Login"}>Logout</Link>
+              {cookie.accessToken !== undefined ? (
+                <>
+                  <Link href={`/Mypage/${getUser}`}>My page</Link>
+                  <div
+                    onClick={() => {
+                      removeCookie("accessToken");
+                      removeCookie("refreshToken");
+                      login_out();
+                      setUser("");
+                    }}
+                  >
+                    <Link href={"/"}>Logout</Link>
+                  </div>
+                </>
+              ) : (
+                <div className={styles.navUserMenu}>
+                  <Link href={"/Login"}>Login</Link>
+                </div>
+              )}
             </div>
-            {/* <div className={styles.navUserMenu}>
-          <Link href={"/Login"}>Login</Link>
-        </div> */}
           </div>
 
           <div className={styles.mobileNav}>
@@ -89,4 +175,10 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export const getState = ({ userReducer }) => {
+  return {
+    state: userReducer,
+  };
+};
+const getDispatch = { login_out };
+export default connect(getState, getDispatch)(Nav);

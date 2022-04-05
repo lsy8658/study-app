@@ -6,6 +6,7 @@ const cookies = new Cookies();
 
 const initialState = {
   user: cookies ? cookies.get("accessToken") : null,
+  decode: "",
   loading: false,
   err: null,
 };
@@ -16,13 +17,15 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         user: null,
+        decode: "",
         isFetching: true,
         error: false,
       };
     case LOGIN_SUCCESS:
       return {
         ...state,
-        user: cookies.set("accessToken", action.payload),
+        user: cookies.set("accessToken", action.payload.user),
+        decode: action.payload.decode,
         isFetching: false,
         error: false,
       };
@@ -30,6 +33,7 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         user: null,
+        decode: "",
         isFetching: false,
         error: true,
       };
@@ -37,6 +41,7 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         user: null,
+        decode: "",
         isFetching: false,
         error: false,
       };
