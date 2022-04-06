@@ -1,0 +1,89 @@
+.gradeBox {
+  position: fixed;
+  top: 45%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 105;
+  background: #152754;
+  width: 90%;
+  max-width: 500px;
+  height: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 25px;
+  border-radius: 18px;
+}
+
+.gradeBox .xicon {
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  cursor: pointer;
+}
+
+.gradeBox h2 {
+  color: #fff;
+  margin: 30px 0;
+}
+
+.gradeBox .gradeForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 20px;
+}
+
+.gradeBox .gradeForm span {
+  color: #e4caca;
+  width: 20%;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.gradeBox .gradeForm .btn1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 35%;
+}
+
+.gradeBox .gradeForm .btn1 button {
+  width: 48%;
+}
+
+.gradeBox .gradeForm .btn1 button:first-of-type {
+  background: #1f7523;
+}
+
+.gradeBox .gradeForm .btn1 button:last-of-type {
+  background: #fc5f5f;
+}
+
+.gradeBox .gradeForm .btn2 {
+  width: 20%;
+}
+
+.gradeBox .gradeForm .btn2 button {
+  background: #1f9440;
+}
+
+.gradeBox .gradeForm button {
+  color: #fff;
+  font-size: 16px;
+  padding: 8px 15px;
+  border-radius: 15px;
+  margin: 0 5px;
+}
+/*# sourceMappingURL=style.module.css.map */

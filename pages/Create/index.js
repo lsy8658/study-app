@@ -1,8 +1,7 @@
 import styles from "./style/style.module.css";
 import Nav from "../../components/nav/Nav";
 import Link from "next/link";
-import GradeModal from "../../components/gradeModal/GradeModal";
-import WaitingModal from "../../components/waitingModal/WaitingModal";
+
 import { useState, useEffect } from "react";
 import Seo from "../../components/Seo";
 import axios from "axios";

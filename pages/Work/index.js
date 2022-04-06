@@ -2,7 +2,8 @@ import styles from "./style/style.module.css";
 import Nav from "../../components/nav/Nav";
 import Link from "next/link";
 import GradeModal from "../../components/gradeModal/GradeModal";
-import WaitingModal from "../../components/waitingModal/WaitingModal";
+import ProjectWaitingModal from "../../components/projectWaitingModal/ProjectWaitingModal";
+import StudyWaitingModal from "../../components/studyWaitingModal/StudyWaitingModal";
 import { useEffect, useReducer, useState } from "react";
 import Seo from "../../components/Seo";
 import UrlModal from "../../components/urlModal/UrlModal";
@@ -22,8 +23,15 @@ const index = ({ state }) => {
   const [email, setEmail] = useState("");
   const [modalBg, setModalBg] = useState(false);
   const [urlModal, setUrlModal] = useState(false); //URL MODAL
-  const [waiting, setWaiting] = useState(false);
-  const [waitData, setWaitData] = useState(false);
+  const [waiting, setWaiting] = useState(false); // project modal display
+  const [studyWaiting, setStudyWaiting] = useState(false); // study modal display
+  const [waitData, setWaitData] = useState(false); // project wait data
+  const [studyWaitData, setStudyWaitData] = useState(false); // study wait data
+  const [myProject, setMyProject] = useState(null); //내가 참여하고있는 프로젝트
+  const [mySuccessProject, setMySuccessProject] = useState(null); //내가 참여했던 프로젝트
+  const [myStudy, setMyStudy] = useState(null); //내가 참여하고있는 프로젝트
+  const [mySuccessStudy, setMySuccessStudy] = useState(null); //내가 참여했던 프로젝트
+
   const router = useRouter();
   useEffect(() => {
     if (cookies.accessToken) {
@@ -71,7 +79,10 @@ const index = ({ state }) => {
               item.member_id[i]?.waiting === true
             );
           }
-        }; /* 
+        };
+
+        /* 
+        
         item.member_id[i]?.user에 대한 정보를 
         직접 불러오려하자 읽어오지 못한다는 error 가 나와서 index 값을 직접 넣어주었음..
         */
@@ -107,6 +118,65 @@ const index = ({ state }) => {
     // console.log(studyComplete);
   }, [project, projectComplete, study, studyComplete]);
 
+  useEffect(() => {
+    if (cookies.accessToken) {
+      const email = cookies.accessToken.decode.email;
+      const getMyProject = async () => {
+        const participate = await axios.post(
+          "http://localhost:8080/api/project/myProject",
+          { email: email }
+        );
+
+        console.log(participate);
+        const myProject = participate.data.filter((item) => {
+          return item.master !== email;
+        });
+        setMyProject(myProject);
+      };
+      getMyProject();
+
+      const mySuccessProject = async () => {
+        const participate = await axios.post(
+          "http://localhost:8080/api/project/mySuccessProject",
+          { email: email }
+        );
+
+        console.log(participate);
+        const myProject = participate.data.filter((item) => {
+          return item.master !== email;
+        });
+        setMySuccessProject(myProject);
+      };
+      mySuccessProject();
+      const getMyStudy = async () => {
+        const participate = await axios.post(
+          "http://localhost:8080/api/study/myStudy",
+          { email: email }
+        );
+
+        console.log(participate);
+        const myProject = participate.data.filter((item) => {
+          return item.master !== email;
+        });
+        setMyStudy(myProject);
+      };
+      getMyStudy();
+
+      const mySuccessStudy = async () => {
+        const participate = await axios.post(
+          "http://localhost:8080/api/study/mySuccessStudy",
+          { email: email }
+        );
+
+        console.log(participate);
+        const myProject = participate.data.filter((item) => {
+          return item.master !== email;
+        });
+        setMySuccessStudy(myProject);
+      };
+      mySuccessStudy();
+    }
+  }, [cookies.accessToken]);
   return (
     <>
       <Seo title={"Studyapp-work"} />
@@ -118,6 +188,7 @@ const index = ({ state }) => {
         onClick={() => {
           setModalBg(false);
           setUrlModal(false);
+          setWaiting(false);
         }}
       ></div>
 
@@ -154,7 +225,7 @@ const index = ({ state }) => {
                   <Link href={"/Create"}>Create</Link>
                 </div>
               </div>
-              <WaitingModal
+              <ProjectWaitingModal
                 setModalBg={setModalBg}
                 setWaiting={setWaiting}
                 waiting={waiting}
@@ -167,6 +238,15 @@ const index = ({ state }) => {
                 <div className={styles.listWrap}>
                   <h2>진행중</h2>
                   <div className={styles.listBox}>
+                    {myProject
+                      ? myProject.map((item, index) => (
+                          <div className={styles.item} key={index}>
+                            <div className={styles.desc}>
+                              <p>{item.title}</p>
+                            </div>
+                          </div>
+                        ))
+                      : ""}
                     {project ? (
                       project.map((item, index) => (
                         <div key={index}>
@@ -221,6 +301,19 @@ const index = ({ state }) => {
                 <div className={styles.listWrap}>
                   <h2>완료</h2>
                   <div className={styles.listBox}>
+                    {mySuccessProject
+                      ? mySuccessProject.map((item, index) => (
+                          <div className={styles.item} key={index}>
+                            <div className={styles.desc}>
+                              <p>{item.title}</p>
+                              <div className={styles.btns1}>
+                                <button>팀원평가</button>
+                                <Link href={item.url}>URL</Link>
+                              </div>
+                            </div>
+                          </div>
+                        ))
+                      : ""}
                     {projectComplete ? (
                       projectComplete.map((item, index) => (
                         <div className={styles.item} key={index}>
@@ -239,7 +332,12 @@ const index = ({ state }) => {
                   </div>
                 </div>
               </div>
-
+              <StudyWaitingModal
+                setModalBg={setModalBg}
+                waitData={studyWaitData}
+                waiting={studyWaiting}
+                setStudyWaiting={setStudyWaiting}
+              />
               <div
                 className={styles.listCon}
                 style={{ display: boxDisplay ? "none" : "block" }}
@@ -247,11 +345,27 @@ const index = ({ state }) => {
                 <div className={styles.listWrap}>
                   <h2>진행중</h2>
                   <div className={styles.studyListBox}>
+                    {myStudy
+                      ? myStudy.map((item, index) => (
+                          <div className={styles.item} key={index}>
+                            <div className={styles.desc}>
+                              <p>{item.title}</p>
+                            </div>
+                          </div>
+                        ))
+                      : ""}
                     {study ? (
                       study.map((item, index) => (
                         <div className={styles.item} key={index}>
                           <div className={styles.waiting}>
-                            <p>
+                            <p
+                              onClick={() => {
+                                setStudyWaitData(item);
+                                setModalBg(true);
+                                setStudyWaiting(true);
+                              }}
+                              style={{ cursor: "pointer" }}
+                            >
                               대기
                               <span>
                                 {
@@ -296,6 +410,18 @@ const index = ({ state }) => {
                 <div className={styles.listWrap}>
                   <h2>완료</h2>
                   <div className={styles.studyListBox}>
+                    {mySuccessStudy
+                      ? mySuccessStudy.map((item, index) => (
+                          <div className={styles.item} key={index}>
+                            <div className={styles.desc}>
+                              <p>{item.title}</p>
+                              <div className={styles.btns1}>
+                                <button>팀원평가</button>
+                              </div>
+                            </div>
+                          </div>
+                        ))
+                      : ""}
                     {studyComplete ? (
                       studyComplete.map((item, index) => (
                         <div className={styles.item} key={index}>

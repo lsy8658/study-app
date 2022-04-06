@@ -12,6 +12,8 @@ const index = ({ modal, setModal, data }) => {
   const [user, setUser] = useState({});
   const [waiting, setWaiting] = useState({});
   const [config, setConfig] = useState();
+  const [memberLength, setMemberLength] = useState([]);
+  const [getGrade, setGetGrade] = useState(); // 작성자 평점
   const router = useRouter();
   useEffect(() => {
     if (data) {
@@ -67,8 +69,23 @@ const index = ({ modal, setModal, data }) => {
         return item.user === user.email;
       });
       setWaiting(res[0]);
+
+      const memberLength = desc.member_id.filter((item) => {
+        return item.waiting === true;
+      });
+      setMemberLength(memberLength);
     }
     console.log(waiting);
+    if (master.grade) {
+      const grades = master.grade.reduce(
+        (prev, curr) => {
+          return Number(prev) + Number(curr);
+        },
+        [0]
+      );
+      const getGrade = grades / master.grade.length;
+      setGetGrade(getGrade.toFixed(1));
+    }
   }, [master, desc, waiting]);
   const newDate = moment(desc.createdAt).format("YYYY-MM-DD");
   const participateHandle = async () => {
@@ -88,7 +105,28 @@ const index = ({ modal, setModal, data }) => {
       console.log(err);
     }
     alert("참여하기 신청이 완료되었습니다.");
-    router.push("/");
+    // router.push("/");
+    window.location.reload();
+  };
+  const abandonmentHandle = async () => {
+    if (cookies.accessToken) {
+      const loginUser = cookies.accessToken.decode.email;
+      const email = {
+        email: loginUser,
+      };
+      try {
+        const res = await axios.post(
+          `http://localhost:8080/api/study/abandonment/${desc._id}`,
+          email,
+          config
+        );
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
+      alert("프로젝트를 포기하였습니다.");
+      window.location.reload();
+    }
   };
   return (
     <>
@@ -131,7 +169,7 @@ const index = ({ modal, setModal, data }) => {
           </div>
           <div className={styles.txtBox}>
             <p>
-              평점 : <span>4.2</span>
+              평점 : <span>{!isNaN(getGrade) ? getGrade : ""}</span>
             </p>
 
             <p>
@@ -152,14 +190,46 @@ const index = ({ modal, setModal, data }) => {
           {cookies.accessToken ? (
             user.email !== master.email ? (
               waiting === undefined ? (
-                <button className={styles.btn1} onClick={participateHandle}>
-                  참여하기
-                </button>
+                memberLength.length !== Number(desc.headCount) ? (
+                  <button className={styles.btn1} onClick={participateHandle}>
+                    참여하기
+                  </button>
+                ) : (
+                  ""
+                )
+              ) : waiting.waiting === true ? (
+                <>
+                  <p
+                    style={{
+                      fontSize: "13px",
+                      color: "red",
+                      marginBottom: "5px",
+                    }}
+                  >
+                    중도에 포기하시면 평점 2점이 부과됩니다.
+                  </p>
+                  <button className={styles.btn3} onClick={abandonmentHandle}>
+                    포기하기
+                  </button>
+                </>
               ) : (
                 <button className={styles.btn2}>대기중</button>
               )
             ) : (
-              <button className={styles.btn3}>포기하기</button>
+              <>
+                <p
+                  style={{
+                    fontSize: "13px",
+                    color: "red",
+                    marginBottom: "5px",
+                  }}
+                >
+                  중도에 포기하시면 평점 2점이 부과됩니다.
+                </p>
+                <button className={styles.btn3} onClick={abandonmentHandle}>
+                  포기하기
+                </button>
+              </>
             )
           ) : (
             ""
