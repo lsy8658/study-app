@@ -32,7 +32,7 @@ const index = () => {
         "https://sy-study-app.herokuapp.com/api/auth/register",
         newUser
       );
-      Router.push("/");
+      Router.push("/Login");
       console.log(res);
     } catch (err) {
       console.log(err);

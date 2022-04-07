@@ -1,9 +1,10 @@
 import styles from "./style/style.module.css";
 import Nav from "../../components/nav/Nav";
 import Link from "next/link";
-import GradeModal from "../../components/gradeModal/GradeModal";
+import StudyGradeModal from "../../components/studyGradeModal/StudyGradeModal";
 import ProjectWaitingModal from "../../components/projectWaitingModal/ProjectWaitingModal";
 import StudyWaitingModal from "../../components/studyWaitingModal/StudyWaitingModal";
+import ProjectGradeModal from "../../components/projectGradeModal/ProjectGradeModal";
 import { useEffect, useReducer, useState } from "react";
 import Seo from "../../components/Seo";
 import UrlModal from "../../components/urlModal/UrlModal";
@@ -31,8 +32,14 @@ const index = ({ state }) => {
   const [mySuccessProject, setMySuccessProject] = useState(null); //내가 참여했던 프로젝트
   const [myStudy, setMyStudy] = useState(null); //내가 참여하고있는 프로젝트
   const [mySuccessStudy, setMySuccessStudy] = useState(null); //내가 참여했던 프로젝트
-
+  const [projectGrade, setProjectGrade] = useState(false); // project 점수 modal
+  const [studyGrade, setStudyGrade] = useState(false); // study 점수 modal
+  const [projectGradeItem, setProjectGradeItem] = useState(null); // project 정보
+  const [studyGradeItem, setStudyGradeItem] = useState(null); // study 정보
   const router = useRouter();
+  console.log(projectGradeItem);
+  // console.log(studyGradeItem);
+
   useEffect(() => {
     if (cookies.accessToken) {
       const accessToken = cookies.accessToken.user;
@@ -180,8 +187,18 @@ const index = ({ state }) => {
   return (
     <>
       <Seo title={"Studyapp-work"} />
-      {/* <GradeModal setModalBg={setModalBg} /> */}
-
+      <ProjectGradeModal
+        setModalBg={setModalBg}
+        projectGrade={projectGrade}
+        setProjectGrade={setProjectGrade}
+        projectGradeItem={projectGradeItem}
+      />
+      <StudyGradeModal
+        setModalBg={setModalBg}
+        setStudyGrade={setStudyGrade}
+        studyGrade={studyGrade}
+        studyGradeItem={studyGradeItem}
+      />
       <div
         className={styles.modalBg}
         style={{ display: `${modalBg ? "block" : "none"}` }}
@@ -189,6 +206,8 @@ const index = ({ state }) => {
           setModalBg(false);
           setUrlModal(false);
           setWaiting(false);
+          setProjectGrade(false);
+          setStudyGrade(false);
         }}
       ></div>
 
@@ -307,7 +326,15 @@ const index = ({ state }) => {
                             <div className={styles.desc}>
                               <p>{item.title}</p>
                               <div className={styles.btns1}>
-                                <button>팀원평가</button>
+                                <button
+                                  onClick={() => {
+                                    setProjectGrade(true);
+                                    setModalBg(true);
+                                    setProjectGradeItem(item);
+                                  }}
+                                >
+                                  팀원평가
+                                </button>
                                 <Link href={item.url}>URL</Link>
                               </div>
                             </div>
@@ -320,7 +347,15 @@ const index = ({ state }) => {
                           <div className={styles.desc}>
                             <p>{item.title}</p>
                             <div className={styles.btns1}>
-                              <button>팀원평가</button>
+                              <button
+                                onClick={() => {
+                                  setProjectGrade(true);
+                                  setModalBg(true);
+                                  setProjectGradeItem(item);
+                                }}
+                              >
+                                팀원평가
+                              </button>
                               <Link href={item.url}>URL</Link>
                             </div>
                           </div>
@@ -390,7 +425,7 @@ const index = ({ state }) => {
                                     );
                                     console.log(res);
                                     alert(`${item.title}이 완료되었습니다.`);
-                                    router.push("/");
+                                    window.location.reload();
                                   }
                                   console.log(item._id);
                                 }}
@@ -416,7 +451,15 @@ const index = ({ state }) => {
                             <div className={styles.desc}>
                               <p>{item.title}</p>
                               <div className={styles.btns1}>
-                                <button>팀원평가</button>
+                                <button
+                                  onClick={() => {
+                                    setStudyGrade(true);
+                                    setModalBg(true);
+                                    setStudyGradeItem(item);
+                                  }}
+                                >
+                                  팀원평가
+                                </button>
                               </div>
                             </div>
                           </div>
@@ -428,8 +471,15 @@ const index = ({ state }) => {
                           <div className={styles.desc}>
                             <p>{item.title}</p>
                             <div className={styles.btns1}>
-                              <button>팀원평가</button>
-                              {/* <button>수정</button> */}
+                              <button
+                                onClick={() => {
+                                  setStudyGrade(true);
+                                  setModalBg(true);
+                                  setStudyGradeItem(item);
+                                }}
+                              >
+                                팀원평가
+                              </button>
                             </div>
                           </div>
                         </div>

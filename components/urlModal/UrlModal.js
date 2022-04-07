@@ -40,7 +40,7 @@ const index = ({ setModalBg, urlModal, projectId, setUrlModal }) => {
         console.log(err);
       }
       console.log(projectId);
-      router.push("/");
+      window.location.reload();
     } else {
       alert("url을 다시 확인해주세요.");
     }

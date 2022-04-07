@@ -92,6 +92,7 @@ const index = ({ modal, setModal, data }) => {
     const userData = {
       user: user.email,
       waiting: false,
+      grade: false,
     };
     console.log(userData);
     try {
@@ -124,7 +125,28 @@ const index = ({ modal, setModal, data }) => {
       } catch (err) {
         console.log(err);
       }
-      alert("프로젝트를 포기하였습니다.");
+      alert("스터디를 중단하였습니다.");
+      window.location.reload();
+    }
+  };
+
+  const projectAbandonHandle = async () => {
+    if (cookies.accessToken) {
+      const loginUser = cookies.accessToken.decode.email;
+      const email = {
+        email: loginUser,
+      };
+      try {
+        const res = await axios.post(
+          `http://localhost:8080/api/study/studyAbandon/${desc._id}`,
+          email,
+          config
+        );
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
+      alert("스터디를 중단하였습니다.");
       window.location.reload();
     }
   };
@@ -224,9 +246,9 @@ const index = ({ modal, setModal, data }) => {
                     marginBottom: "5px",
                   }}
                 >
-                  중도에 포기하시면 평점 2점이 부과됩니다.
+                  포기하시면 평점 2점과 Project가 사라집니다.
                 </p>
-                <button className={styles.btn3} onClick={abandonmentHandle}>
+                <button className={styles.btn3} onClick={projectAbandonHandle}>
                   포기하기
                 </button>
               </>

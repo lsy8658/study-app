@@ -3,7 +3,7 @@ import Nav from "../../components/nav/Nav";
 import styles from "./style/style.module.css";
 import Seo from "../../components/Seo";
 import StudyModal from "../../components/studyModal/StudyModal";
-import GradeModal from "../../components/gradeModal/GradeModal";
+
 import axios from "axios";
 const index = () => {
   const [modal, setModal] = useState(false);

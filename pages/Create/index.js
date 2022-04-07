@@ -79,48 +79,50 @@ const index = ({ state }) => {
     if (tpye === "Project") {
       // alert("Project");
       if (
-        projectData.area === "" &&
-        projectData.deadline === "" &&
-        projectData.headCount === "" &&
-        projectData.language === "" &&
-        projectData.meet === "" &&
-        projectData.title === "" &&
-        projectData.master === ""
+        projectData.area !== undefined &&
+        projectData.deadline !== undefined &&
+        projectData.headCount !== undefined &&
+        projectData.language !== undefined &&
+        projectData.meet !== undefined &&
+        projectData.title !== undefined &&
+        projectData.master !== undefined
       ) {
+        if (user !== undefined) {
+          const res = await axios.post(
+            "http://localhost:8080/api/project/create",
+            projectData,
+            config
+          );
+          console.log(res);
+          router.push("/Work");
+        }
+      } else {
         alert("정보를 모두 입력해주세요.");
         return;
-      }
-      if (user !== "") {
-        const res = await axios.post(
-          "http://localhost:8080/api/project/create",
-          projectData,
-          config
-        );
-        console.log(res);
-        router.push("/Work");
       }
     }
     if (tpye === "Study") {
       // alert("Study");
       if (
-        studyData.area === "" &&
-        studyData.headCount === "" &&
-        studyData.language === "" &&
-        studyData.meet === "" &&
-        studyData.title === "" &&
-        studyData.master === ""
+        studyData.area !== undefined &&
+        studyData.headCount !== undefined &&
+        studyData.language !== undefined &&
+        studyData.meet !== undefined &&
+        studyData.title !== undefined &&
+        studyData.master !== undefined
       ) {
+        if (user !== undefined) {
+          const res = await axios.post(
+            "http://localhost:8080/api/study/create",
+            studyData,
+            config
+          );
+          console.log(res);
+          router.push("/Work");
+        }
+      } else {
         alert("정보를 모두 입력해주세요.");
         return;
-      }
-      if (user !== "") {
-        const res = await axios.post(
-          "http://localhost:8080/api/study/create",
-          studyData,
-          config
-        );
-        console.log(res);
-        router.push("/Work");
       }
     }
   };
@@ -234,7 +236,6 @@ const index = ({ state }) => {
                       onChange={inputHandle}
                     >
                       <option></option>
-                      <option>1</option>
                       <option>2</option>
                       <option>3</option>
                       <option>4</option>
