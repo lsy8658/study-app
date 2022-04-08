@@ -8,7 +8,10 @@ const index = ({ setModalBg, waiting, setStudyWaiting, waitData }) => {
   const [config, setConfig] = useState({});
   const [cookies, setCookie, removeCookie] = useCookies();
   const [member, setMember] = useState([]);
+  const [memberTrue, setMemberTrue] = useState([]); //waiting 이 true인사람
   const [projectId, setProjectId] = useState("");
+  const [headCount, setHeadCount] = useState();
+  const [match, setMatch] = useState();
   useEffect(() => {
     if (cookies.accessToken) {
       const accessToken = cookies.accessToken.user;
@@ -21,8 +24,8 @@ const index = ({ setModalBg, waiting, setStudyWaiting, waitData }) => {
     }
   }, [cookies.accessToken]);
   useEffect(() => {
-    console.log(waitData);
-    console.log(waitData._id);
+    // console.log(waitData);
+    // console.log(waitData._id);
     if (waitData) {
       setProjectId(waitData._id);
     }
@@ -30,10 +33,17 @@ const index = ({ setModalBg, waiting, setStudyWaiting, waitData }) => {
       const members = waitData.member_id.filter((item) => {
         return item.waiting === false;
       });
+      const membersTrue = waitData.member_id.filter((item) => {
+        return item.waiting === true;
+      });
       setMember(members);
+      setMemberTrue(membersTrue.length);
+    }
+    if (waitData.headCount) {
+      setHeadCount(waitData.headCount);
     }
   }, [waitData]);
-  console.log(member);
+
   const refuseHandle = async (user) => {
     if (user) {
       console.log(user);
@@ -66,6 +76,14 @@ const index = ({ setModalBg, waiting, setStudyWaiting, waitData }) => {
       }
     }
   }; //수락
+  useEffect(() => {
+    if (memberTrue) {
+      if (headCount) {
+        setMatch(Number(memberTrue) === Number(headCount));
+      }
+    }
+  }, [memberTrue, headCount]);
+  console.log(memberTrue, headCount, match);
   return (
     <div
       className={styles.gradeBox}
@@ -90,32 +108,34 @@ const index = ({ setModalBg, waiting, setStudyWaiting, waitData }) => {
                   <span>
                     <Link href="/">{item.user}</Link>
                   </span>
-                  <span>프론트엔드</span>
+                  {match ? (
+                    ""
+                  ) : (
+                    <div className={styles.btn1}>
+                      <button
+                        onClick={() => {
+                          if (item.user) {
+                            acceptHandle(item.user);
+                          }
 
-                  <div className={styles.btn1}>
-                    <button
-                      onClick={() => {
-                        if (item.user) {
-                          acceptHandle(item.user);
-                        }
+                          // alert(item.user);
+                        }}
+                      >
+                        수락
+                      </button>
+                      <button
+                        onClick={() => {
+                          if (item.user) {
+                            refuseHandle(item.user);
+                          }
 
-                        // alert(item.user);
-                      }}
-                    >
-                      수락
-                    </button>
-                    <button
-                      onClick={() => {
-                        if (item.user) {
-                          refuseHandle(item.user);
-                        }
-
-                        // alert(item.user);
-                      }}
-                    >
-                      거절
-                    </button>
-                  </div>
+                          // alert(item.user);
+                        }}
+                      >
+                        거절
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             ))

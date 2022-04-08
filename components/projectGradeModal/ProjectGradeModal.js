@@ -2,6 +2,7 @@ import styles from "./style/style.module.css";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
+import axios from "axios";
 const index = ({
   setModalBg,
   setProjectGrade,
@@ -10,11 +11,22 @@ const index = ({
 }) => {
   const [cookies, setCookie, removeCookie] = useCookies();
   const [member, setMember] = useState(null);
+  const [input, setInput] = useState({});
+  const [email, setEmail] = useState("");
+  const [config, setConfig] = useState(null);
 
   useEffect(() => {
     if (cookies.accessToken) {
       const user = cookies.accessToken.decode.email;
-
+      const accessToken = cookies.accessToken.user;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      };
+      setConfig(config);
+      console.log(accessToken);
+      setEmail(user);
       if (projectGradeItem) {
         const memberFilter = projectGradeItem.member_id.filter((item) => {
           return item.user !== user && item.waiting === true;
@@ -22,7 +34,57 @@ const index = ({
         setMember(memberFilter);
       }
     }
-  }, [projectGradeItem, cookies.accessToken]);
+  }, [projectGradeItem, cookies.accessToken, email]);
+  console.log(input);
+  const formHandle = async (e) => {
+    e.preventDefault();
+    console.log(projectGradeItem);
+    if (Object.keys(input).length === member.length) {
+      for (let i = 0; i <= member.length; i++) {
+        const userKeys = Object.entries(input);
+        let data = userKeys[i];
+
+        if (data) {
+          const user = {
+            email: data[0],
+            grade: data[1],
+          };
+          if (user) {
+            const res = await axios.post(
+              "http://localhost:8080/api/project/evaluation",
+              user,
+              config
+            );
+
+            console.log(res.data);
+          }
+        }
+      }
+      if (projectGradeItem) {
+        if (email) {
+          const email = {
+            email: email,
+          };
+          const gradeButton = await axios.post(
+            `http://localhost:8080/api/project/gradeTrue/${projectGradeItem._id}`,
+            email,
+            config
+          );
+          console.log(gradeButton);
+        }
+        window.location.reload();
+      } else {
+        return;
+      }
+    } else {
+      alert("점수를 모두 입력해주세요.");
+    }
+  };
+  const inputHandle = (e) => {
+    const { name, value } = e.target;
+    setInput({ ...input, [name]: value });
+  };
+
   return (
     <div
       className={styles.gradeBox}
@@ -44,7 +106,7 @@ const index = ({
       </div>
       <h2>팀원 평가</h2>
       <div className={styles.gradeCon}>
-        <form>
+        <form onSubmit={formHandle}>
           <div className={styles.gradeForm}>
             {member
               ? member.map((item, index) => (
@@ -54,6 +116,8 @@ const index = ({
                     <select
                       className={styles.gradeSelect}
                       style={{ textAlign: "center" }}
+                      onChange={inputHandle}
+                      name={item.user}
                     >
                       <option>0</option>
                       <option>1</option>

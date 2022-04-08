@@ -37,7 +37,7 @@ const index = ({ state }) => {
   const [projectGradeItem, setProjectGradeItem] = useState(null); // project 정보
   const [studyGradeItem, setStudyGradeItem] = useState(null); // study 정보
   const router = useRouter();
-  console.log(projectGradeItem);
+  // console.log(projectGradeItem);
   // console.log(studyGradeItem);
 
   useEffect(() => {
@@ -64,6 +64,8 @@ const index = ({ state }) => {
         const projectRes = await axios.get(
           "http://localhost:8080/api/project/getProject"
         );
+        // console.log(projectRes);
+
         const studyRes = await axios.get(
           "http://localhost:8080/api/study/getStudy"
         );
@@ -73,8 +75,10 @@ const index = ({ state }) => {
           for (let i = 0; i < 6; i++) {
             return (
               item.success === false &&
-              item.member_id[i]?.user === email &&
-              item.member_id[i]?.waiting === true
+              item.master === email &&
+              item.member_id.filter((item) => {
+                return item.user === email && item.waiting === true;
+              })
             );
           }
         };
@@ -82,29 +86,27 @@ const index = ({ state }) => {
           for (let i = 0; i < 6; i++) {
             return (
               item.success === true &&
-              item.member_id[i]?.user === email &&
-              item.member_id[i]?.waiting === true
+              item.master === email &&
+              item.member_id.filter((item) => {
+                return item.user === email && item.waiting === true;
+              })
             );
           }
         };
 
-        /* 
-        
-        item.member_id[i]?.user에 대한 정보를 
-        직접 불러오려하자 읽어오지 못한다는 error 가 나와서 index 값을 직접 넣어주었음..
-        */
-        const progress = await progressData.filter((item, index) => {
+        const progress = await progressData.filter((item) => {
           return progressSet(item);
         });
-
-        const complete = await projectRes.data.filter((item, index) => {
+        // console.log(progress);
+        const complete = await progressData.filter((item) => {
           return completeSet(item);
         });
-        const studyProgress = await studyData.filter((item, index) => {
+        // console.log(complete);
+        const studyProgress = await studyData.filter((item) => {
           return progressSet(item);
         });
 
-        const studyComplete = await studyRes.data.filter((item, index) => {
+        const studyComplete = await studyData.filter((item) => {
           return completeSet(item);
         });
 
@@ -114,16 +116,9 @@ const index = ({ state }) => {
         setStudyComplete(studyComplete);
       };
 
-      getProject();
+      getProject(); //내가 작성한 프로젝트
     }
   }, [user, state.user, email, cookies.accessToken]);
-
-  useEffect(() => {
-    // console.log(project);
-    // console.log(projectComplete);
-    // console.log(study);
-    // console.log(studyComplete);
-  }, [project, projectComplete, study, studyComplete]);
 
   useEffect(() => {
     if (cookies.accessToken) {
@@ -134,7 +129,6 @@ const index = ({ state }) => {
           { email: email }
         );
 
-        console.log(participate);
         const myProject = participate.data.filter((item) => {
           return item.master !== email;
         });
@@ -147,8 +141,7 @@ const index = ({ state }) => {
           "http://localhost:8080/api/project/mySuccessProject",
           { email: email }
         );
-
-        console.log(participate);
+        // console.log(participate);
         const myProject = participate.data.filter((item) => {
           return item.master !== email;
         });
@@ -161,7 +154,6 @@ const index = ({ state }) => {
           { email: email }
         );
 
-        console.log(participate);
         const myProject = participate.data.filter((item) => {
           return item.master !== email;
         });
@@ -175,13 +167,12 @@ const index = ({ state }) => {
           { email: email }
         );
 
-        console.log(participate);
         const myProject = participate.data.filter((item) => {
           return item.master !== email;
         });
         setMySuccessStudy(myProject);
       };
-      mySuccessStudy();
+      mySuccessStudy(); //내가 참여한
     }
   }, [cookies.accessToken]);
   return (
@@ -326,6 +317,42 @@ const index = ({ state }) => {
                             <div className={styles.desc}>
                               <p>{item.title}</p>
                               <div className={styles.btns1}>
+                                {item.member_id.filter((item) => {
+                                  return (
+                                    item.user === email && item.grade === false
+                                  );
+                                })[0] !== undefined ? (
+                                  <button
+                                    onClick={() => {
+                                      setProjectGrade(true);
+                                      setModalBg(true);
+                                      setProjectGradeItem(item);
+                                    }}
+                                  >
+                                    팀원평가
+                                  </button>
+                                ) : (
+                                  ""
+                                )}
+
+                                <Link href={item.url}>URL</Link>
+                              </div>
+                            </div>
+                          </div>
+                        ))
+                      : ""}
+
+                    {projectComplete ? (
+                      projectComplete.map((item, index) => (
+                        <div className={styles.item} key={index}>
+                          <div className={styles.desc}>
+                            <p>{item.title}</p>
+                            <div className={styles.btns1}>
+                              {item.member_id.filter((item) => {
+                                return (
+                                  item.user === email && item.grade === false
+                                );
+                              })[0] !== undefined ? (
                                 <button
                                   onClick={() => {
                                     setProjectGrade(true);
@@ -335,27 +362,10 @@ const index = ({ state }) => {
                                 >
                                   팀원평가
                                 </button>
-                                <Link href={item.url}>URL</Link>
-                              </div>
-                            </div>
-                          </div>
-                        ))
-                      : ""}
-                    {projectComplete ? (
-                      projectComplete.map((item, index) => (
-                        <div className={styles.item} key={index}>
-                          <div className={styles.desc}>
-                            <p>{item.title}</p>
-                            <div className={styles.btns1}>
-                              <button
-                                onClick={() => {
-                                  setProjectGrade(true);
-                                  setModalBg(true);
-                                  setProjectGradeItem(item);
-                                }}
-                              >
-                                팀원평가
-                              </button>
+                              ) : (
+                                ""
+                              )}
+
                               <Link href={item.url}>URL</Link>
                             </div>
                           </div>
@@ -451,15 +461,23 @@ const index = ({ state }) => {
                             <div className={styles.desc}>
                               <p>{item.title}</p>
                               <div className={styles.btns1}>
-                                <button
-                                  onClick={() => {
-                                    setStudyGrade(true);
-                                    setModalBg(true);
-                                    setStudyGradeItem(item);
-                                  }}
-                                >
-                                  팀원평가
-                                </button>
+                                {item.member_id.filter((item) => {
+                                  return (
+                                    item.user === email && item.grade === false
+                                  );
+                                })[0] !== undefined ? (
+                                  <button
+                                    onClick={() => {
+                                      setStudyGrade(true);
+                                      setModalBg(true);
+                                      setStudyGradeItem(item);
+                                    }}
+                                  >
+                                    팀원평가
+                                  </button>
+                                ) : (
+                                  "😀"
+                                )}
                               </div>
                             </div>
                           </div>
@@ -471,15 +489,23 @@ const index = ({ state }) => {
                           <div className={styles.desc}>
                             <p>{item.title}</p>
                             <div className={styles.btns1}>
-                              <button
-                                onClick={() => {
-                                  setStudyGrade(true);
-                                  setModalBg(true);
-                                  setStudyGradeItem(item);
-                                }}
-                              >
-                                팀원평가
-                              </button>
+                              {item.member_id.filter((item) => {
+                                return (
+                                  item.user === email && item.grade === false
+                                );
+                              })[0] !== undefined ? (
+                                <button
+                                  onClick={() => {
+                                    setStudyGrade(true);
+                                    setModalBg(true);
+                                    setStudyGradeItem(item);
+                                  }}
+                                >
+                                  팀원평가
+                                </button>
+                              ) : (
+                                "😀"
+                              )}
                             </div>
                           </div>
                         </div>
