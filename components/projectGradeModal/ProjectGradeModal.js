@@ -39,6 +39,7 @@ const index = ({
   const formHandle = async (e) => {
     e.preventDefault();
     console.log(projectGradeItem);
+
     if (Object.keys(input).length === member.length) {
       for (let i = 0; i <= member.length; i++) {
         const userKeys = Object.entries(input);
@@ -60,24 +61,28 @@ const index = ({
           }
         }
       }
-      if (projectGradeItem) {
-        if (email) {
-          const email = {
-            email: email,
-          };
-          const gradeButton = await axios.post(
-            `http://localhost:8080/api/project/gradeTrue/${projectGradeItem._id}`,
-            email,
-            config
-          );
-          console.log(gradeButton);
-        }
-        window.location.reload();
+
+      if (cookies.accessToken) {
+        const email = {
+          email: cookies.accessToken.decode.email,
+        };
+
+        console.log(email);
+        const gradeButton = await axios.post(
+          `http://localhost:8080/api/project/gradeTrue/${projectGradeItem._id}`,
+          email,
+          config
+        );
+        console.log(gradeButton);
       } else {
+        alert("email 에러");
         return;
       }
+
+      window.location.reload();
     } else {
       alert("점수를 모두 입력해주세요.");
+      return;
     }
   };
   const inputHandle = (e) => {

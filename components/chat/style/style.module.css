@@ -1,0 +1,248 @@
+.chatCon {
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+}
+
+.chatCon .chatIcon {
+  background: #a3c793;
+  text-align: center;
+  border-radius: 50%;
+  padding: 13px;
+  cursor: pointer;
+}
+
+.chatCon .chatIcon:hover {
+  background: #c6e645;
+}
+
+.chatCon .chatList {
+  width: 350px;
+  background: #a2dd82;
+  height: 400px;
+  max-height: 500px;
+  border-radius: 20px;
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 20px;
+}
+
+.chatCon .chatList .xIcon {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+}
+
+.chatCon .chatList h3 {
+  text-align: center;
+  padding: 10px 0;
+  font-size: 24px;
+}
+
+.chatCon .chatList .chatListWrap {
+  height: 310px;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.chatCon .chatList .chatListWrap::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera*/
+}
+
+.chatCon .chatList .chatListWrap .chatListItem {
+  cursor: pointer;
+  margin-top: 10px;
+  background: #fff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px 20px;
+  border-radius: 18px;
+}
+
+.chatCon .chatList .chatListWrap .chatListItem:hover {
+  background: #eec087;
+}
+
+.chatCon .chatList .chatListWrap .chatListItem .chatListItemTxt {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.chatCon .chatList .chatListWrap .chatListItem .chatListItemTxt p {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 70%;
+  overflow: hidden;
+}
+
+.chatCon .chatList .chatListWrap .chatListItem .chatListItemTxt small {
+  color: blue;
+}
+
+.chatCon .chatRoom {
+  width: 350px;
+  background: #b4b0b3;
+  height: 450px;
+  border-radius: 20px;
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 20px;
+}
+
+.chatCon .chatRoom .xIcon {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+}
+
+.chatCon .chatRoom .chatRoomWrap {
+  margin-top: 40px;
+}
+
+.chatCon .chatRoom .chatRoomWrap .chatWindow {
+  width: 100%;
+  background: #fff;
+  height: 300px;
+  border-radius: 20px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.chatCon .chatRoom .chatRoomWrap .chatWindow::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera*/
+}
+
+.chatCon .chatRoom .chatRoomWrap .chatWindow .chatItem {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px 10px;
+}
+
+.chatCon .chatRoom .chatRoomWrap .chatWindow .chatItem .desc {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+
+.chatCon .chatRoom .chatRoomWrap .chatWindow .chatItem .desc span {
+  margin-bottom: 5px;
+}
+
+.chatCon .chatRoom .chatRoomWrap .chatWindow .chatItem .desc p {
+  border-radius: 15px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  word-break: break-all;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+}
+
+.chatCon .chatRoom .chatRoomWrap .chatWindow .chatItem .desc small {
+  margin-top: 5px;
+}
+
+.chatCon .chatRoom .chatRoomWrap .chatWindow .chatItem.left .desc {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.chatCon .chatRoom .chatRoomWrap .chatWindow .chatItem.left .desc p {
+  background: #83e688;
+}
+
+.chatCon .chatRoom .chatRoomWrap .chatWindow .chatItem.left .desc span {
+  margin-left: 5px;
+}
+
+.chatCon .chatRoom .chatRoomWrap .chatWindow .chatItem.right {
+  float: right;
+}
+
+.chatCon .chatRoom .chatRoomWrap .chatWindow .chatItem.right .desc {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.chatCon .chatRoom .chatRoomWrap .chatWindow .chatItem.right .desc p {
+  background: #73b5ec;
+}
+
+.chatCon .chatRoom .chatRoomWrap .chatWindow .chatItem.right .desc span {
+  margin-right: 5px;
+}
+
+.chatCon .chatRoom .chatForm {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 30px;
+}
+
+.chatCon .chatRoom .chatForm .chatInput {
+  width: 70%;
+  border-radius: 18px;
+  font-size: 15px;
+  text-indent: 10px;
+  padding: 5px 0;
+}
+
+.chatCon .chatRoom .chatForm .chatButton {
+  width: 28%;
+  background: black;
+  color: #fff;
+  padding: 5px 0;
+  border-radius: 18px;
+}
+
+@media (min-width: 319px) and (max-width: 757px) {
+  .chatCon {
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+  }
+  .chatCon .chatIcon {
+    background: #a3c793;
+    text-align: center;
+    border-radius: 50%;
+    padding: 13px;
+    cursor: pointer;
+  }
+  .chatCon .chatIcon:hover {
+    background: #c6e645;
+  }
+  .chatCon .chatList {
+    width: 300px;
+  }
+  .chatCon .chatRoom {
+    width: 300px;
+  }
+}
+/*# sourceMappingURL=style.module.css.map */

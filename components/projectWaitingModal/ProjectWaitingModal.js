@@ -12,6 +12,7 @@ const index = ({ setModalBg, waiting, setWaiting, waitData }) => {
   const [projectId, setProjectId] = useState("");
   const [headCount, setHeadCount] = useState();
   const [match, setMatch] = useState();
+  const [getChatList, setGetChatList] = useState([]); //list 데이터
   useEffect(() => {
     if (cookies.accessToken) {
       const accessToken = cookies.accessToken.user;
@@ -23,6 +24,7 @@ const index = ({ setModalBg, waiting, setWaiting, waitData }) => {
       setConfig(config);
     }
   }, [cookies.accessToken]);
+
   useEffect(() => {
     // console.log(waitData);
     // console.log(waitData._id);
@@ -71,6 +73,13 @@ const index = ({ setModalBg, waiting, setWaiting, waitData }) => {
           config
         );
         console.log(res.data);
+        const chat = { email: user, projectId: projectId };
+        const participateChat = await axios.post(
+          `http://localhost:8080/api/chat/participate`,
+          chat,
+          config
+        );
+        console.log(participateChat);
         window.location.reload();
       } catch (err) {
         console.log(err);

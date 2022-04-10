@@ -21,6 +21,7 @@ const index = ({ data, params }) => {
   const [infoModify, setInfoModify] = useState(false);
 
   const [config, setConfig] = useState();
+  const [getGrade, setGetGrade] = useState();
   console.log(password);
   console.log(pwCheck);
   console.log(cookies);
@@ -152,6 +153,19 @@ const index = ({ data, params }) => {
       return;
     }
   };
+  useEffect(() => {
+    if (data.grade) {
+      const grades = data.grade.reduce(
+        (prev, curr) => {
+          return Number(prev) + Number(curr);
+        },
+        [0]
+      );
+      const getGrade = grades / data.grade.length;
+      setGetGrade(getGrade.toFixed(1));
+    }
+  }, [data]);
+
   return (
     <div className={styles.containerBox}>
       <Seo title={"Studyapp - Mypage"} />
@@ -164,6 +178,18 @@ const index = ({ data, params }) => {
           >
             <h3>My Page</h3>
             <p>{data.email}</p>
+            <p>
+              평점 :
+              <span
+                style={{
+                  color: getGrade <= 2.5 ? "red" : "green",
+                  marginLeft: "5px",
+                }}
+              >
+                {getGrade}
+              </span>
+            </p>
+
             <p>{data.name}</p>
             <p>{data.developer}</p>
             <p>{data.address}</p>

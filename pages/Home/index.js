@@ -3,7 +3,7 @@ import Nav from "../../components/nav/Nav";
 import styles from "./style/style.module.css";
 import Image from "next/image";
 import axios from "axios";
-
+// import Chat from "../../components/chat/Chat";
 const index = () => {
   const [newProject, setNewProject] = useState([]);
   const [newStudy, setNewStudy] = useState([]);
@@ -34,6 +34,7 @@ const index = () => {
     <>
       <Nav />
       <div className={styles.container}>
+        {/* <Chat /> */}
         <div className={styles.aside}>
           <h1>Project &#38; Study</h1>
           <h2>오늘의 스터디</h2>

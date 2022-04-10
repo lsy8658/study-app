@@ -129,9 +129,13 @@ const Nav = ({ state, login_out }) => {
               <li>
                 <Link href={"/Project"}>Project</Link>
               </li>
-              <li>
-                <Link href={"/Work"}>Work</Link>
-              </li>
+              {cookie.accessToken !== undefined ? (
+                <li>
+                  <Link href={"/Work"}>Work</Link>
+                </li>
+              ) : (
+                ""
+              )}
             </ul>
           </div>
           <div className={styles.mainNav}>

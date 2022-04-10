@@ -37,8 +37,6 @@ const index = ({ state }) => {
   const [projectGradeItem, setProjectGradeItem] = useState(null); // project 정보
   const [studyGradeItem, setStudyGradeItem] = useState(null); // study 정보
   const router = useRouter();
-  // console.log(projectGradeItem);
-  // console.log(studyGradeItem);
 
   useEffect(() => {
     if (cookies.accessToken) {
@@ -335,7 +333,11 @@ const index = ({ state }) => {
                                   ""
                                 )}
 
-                                <Link href={item.url}>URL</Link>
+                                {item.url ? (
+                                  <Link href={item.url}>URL</Link>
+                                ) : (
+                                  ""
+                                )}
                               </div>
                             </div>
                           </div>
@@ -366,7 +368,7 @@ const index = ({ state }) => {
                                 ""
                               )}
 
-                              <Link href={item.url}>URL</Link>
+                              {item.url ? <Link href={item.url}>URL</Link> : ""}
                             </div>
                           </div>
                         </div>

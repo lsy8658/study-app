@@ -1,0 +1,201 @@
+@import "../../../styles/mixin.scss";
+.chatCon {
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+
+  .chatIcon {
+    background: #a3c793;
+    text-align: center;
+    border-radius: 50%;
+    padding: 13px;
+
+    cursor: pointer;
+    &:hover {
+      background: #c6e645;
+    }
+  }
+  .chatList {
+    width: 350px;
+    background: rgb(162, 221, 130);
+    height: 400px;
+    max-height: 500px;
+    border-radius: 20px;
+    position: relative;
+    box-sizing: border-box;
+    padding: 20px;
+    .xIcon {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      cursor: pointer;
+    }
+    h3 {
+      text-align: center;
+      padding: 10px 0;
+      font-size: 24px;
+    }
+    .chatListWrap {
+      height: 310px;
+      overflow: scroll;
+
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+
+      &::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera*/
+      }
+      .chatListItem {
+        cursor: pointer;
+        margin-top: 10px;
+        background: #fff;
+        box-sizing: border-box;
+        padding: 10px 20px;
+        border-radius: 18px;
+        &:hover {
+          background: rgb(238, 192, 135);
+        }
+        .chatListItemTxt {
+          display: flex;
+          justify-content: space-between;
+          p {
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            width: 70%;
+            overflow: hidden;
+          }
+          small {
+            color: blue;
+          }
+        }
+      }
+    }
+  }
+  .chatRoom {
+    width: 350px;
+    background: rgb(180, 176, 179);
+    height: 450px;
+
+    border-radius: 20px;
+    position: relative;
+    box-sizing: border-box;
+    padding: 20px;
+    .xIcon {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      cursor: pointer;
+    }
+    .chatRoomWrap {
+      margin-top: 40px;
+      .chatWindow {
+        width: 100%;
+        background: #fff;
+        height: 300px;
+        border-radius: 20px;
+        overflow-y: scroll;
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+        &::-webkit-scrollbar {
+          display: none; /* Chrome, Safari, Opera*/
+        }
+        .chatItem {
+          box-sizing: border-box;
+          padding: 10px 10px;
+
+          .desc {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            span {
+              margin-bottom: 5px;
+            }
+            p {
+              border-radius: 15px;
+
+              width: fit-content;
+              word-break: break-all;
+              box-sizing: border-box;
+              padding: 10px;
+            }
+            small {
+              margin-top: 5px;
+            }
+          }
+
+          &.left {
+            .desc {
+              align-items: flex-start;
+              p {
+                background: rgb(131, 230, 136);
+              }
+              span {
+                margin-left: 5px;
+              }
+            }
+          }
+          &.right {
+            float: right;
+            .desc {
+              align-items: flex-end;
+              p {
+                background: rgb(115, 181, 236);
+              }
+              span {
+                margin-right: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .chatForm {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      .chatInput {
+        width: 70%;
+        border-radius: 18px;
+        font-size: 15px;
+        text-indent: 10px;
+        padding: 5px 0;
+      }
+      .chatButton {
+        width: 28%;
+        background: rgb(0, 0, 0);
+        color: #fff;
+        padding: 5px 0;
+        border-radius: 18px;
+      }
+    }
+  }
+}
+@include mobile {
+  .chatCon {
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    .chatIcon {
+      background: #a3c793;
+      text-align: center;
+      border-radius: 50%;
+      padding: 13px;
+      cursor: pointer;
+      &:hover {
+        background: #c6e645;
+      }
+    }
+    .chatList {
+      width: 300px;
+    }
+    .chatRoom {
+      width: 300px;
+    }
+  }
+}
+
+@include tablet {
+}
+
+@include desktop {
+}

@@ -54,6 +54,7 @@ const index = ({ setModalBg, waiting, setStudyWaiting, waitData }) => {
           config
         );
         console.log(res.data);
+
         window.location.reload();
       } catch (err) {
         console.log(err);
@@ -70,6 +71,13 @@ const index = ({ setModalBg, waiting, setStudyWaiting, waitData }) => {
           config
         );
         console.log(res.data);
+        const chat = { email: user, projectId: projectId };
+        const participateChat = await axios.post(
+          `http://localhost:8080/api/chat/participate`,
+          chat,
+          config
+        );
+        console.log(participateChat);
         window.location.reload();
       } catch (err) {
         console.log(err);

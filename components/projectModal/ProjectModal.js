@@ -119,6 +119,7 @@ const index = ({ modal, setModal, data }) => {
       const email = {
         email: loginUser,
       };
+
       try {
         const res = await axios.post(
           `http://localhost:8080/api/project/abandonment/${desc._id}`,
@@ -129,6 +130,23 @@ const index = ({ modal, setModal, data }) => {
       } catch (err) {
         console.log(err);
       }
+
+      try {
+        const exclude = await axios.post(
+          `http://localhost:8080/api/chat/exclude`,
+          {
+            projectId: desc._id,
+            email: loginUser,
+          },
+          config
+        );
+        console.log(desc._id);
+        console.log(loginUser);
+        console.log(exclude);
+      } catch (err) {
+        console.log(err);
+      }
+
       alert("프로젝트를 포기하였습니다.");
       window.location.reload();
     }
@@ -139,6 +157,7 @@ const index = ({ modal, setModal, data }) => {
       const email = {
         email: loginUser,
       };
+
       try {
         const res = await axios.post(
           `http://localhost:8080/api/project/projectAbandon/${desc._id}`,
@@ -149,6 +168,23 @@ const index = ({ modal, setModal, data }) => {
       } catch (err) {
         console.log(err);
       }
+
+      try {
+        const exclude = await axios.post(
+          `http://localhost:8080/api/chat/exclude`,
+          {
+            projectId: desc._id,
+            email: loginUser,
+          },
+          config
+        );
+        console.log(desc._id);
+        console.log(loginUser);
+        console.log(exclude);
+      } catch (err) {
+        console.log(err);
+      }
+
       alert("프로젝트를 포기하였습니다.");
       window.location.reload();
     }

@@ -41,11 +41,23 @@ const index = ({ setModalBg, urlModal, projectId, setUrlModal }) => {
       }
       console.log(projectId);
       window.location.reload();
-    } else {
-      alert("url을 다시 확인해주세요.");
     }
   };
 
+  const noUrlHandle = async () => {
+    try {
+      const res = await axios.put(
+        `http://localhost:8080/api/project/updateUrl/${projectId}`,
+        { url: "" },
+        config
+      );
+      console.log(res);
+      alert("해당 프로젝트가 완료되었습니다.");
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div
       className={styles.urlBox}
@@ -80,6 +92,7 @@ const index = ({ setModalBg, urlModal, projectId, setUrlModal }) => {
               onClick={() => {
                 setModalBg(false);
                 setUrlModal(false);
+                noUrlHandle();
               }}
             >
               추가 안함

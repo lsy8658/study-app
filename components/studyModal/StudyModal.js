@@ -115,6 +115,7 @@ const index = ({ modal, setModal, data }) => {
       const email = {
         email: loginUser,
       };
+
       try {
         const res = await axios.post(
           `http://localhost:8080/api/study/abandonment/${desc._id}`,
@@ -122,6 +123,20 @@ const index = ({ modal, setModal, data }) => {
           config
         );
         console.log(res);
+      } catch (err) {
+        console.log(err);
+      }
+
+      try {
+        const exclude = await axios.post(
+          `http://localhost:8080/api/chat/exclude`,
+          {
+            projectId: desc._id,
+            email: loginUser,
+          },
+          config
+        );
+        console.log(exclude);
       } catch (err) {
         console.log(err);
       }
@@ -136,6 +151,7 @@ const index = ({ modal, setModal, data }) => {
       const email = {
         email: loginUser,
       };
+
       try {
         const res = await axios.post(
           `http://localhost:8080/api/study/studyAbandon/${desc._id}`,
@@ -146,6 +162,20 @@ const index = ({ modal, setModal, data }) => {
       } catch (err) {
         console.log(err);
       }
+      try {
+        const exclude = await axios.post(
+          `http://localhost:8080/api/chat/exclude`,
+          {
+            projectId: desc._id,
+            email: loginUser,
+          },
+          config
+        );
+        console.log(exclude);
+      } catch (err) {
+        console.log(err);
+      }
+
       alert("스터디를 중단하였습니다.");
       window.location.reload();
     }

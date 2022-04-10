@@ -21,6 +21,7 @@ const index = ({ state }) => {
   useEffect(() => {
     if (cookies.accessToken) {
       setUser(cookies.accessToken.decode.email);
+      console.log(cookies);
     }
     console.log(user);
   }, [cookies.accessToken, user]);
@@ -74,6 +75,7 @@ const index = ({ state }) => {
     master: user,
   };
   console.log(studyData);
+
   const formHandle = async (e) => {
     e.preventDefault();
     if (tpye === "Project") {
@@ -88,12 +90,33 @@ const index = ({ state }) => {
         projectData.master !== undefined
       ) {
         if (user !== undefined) {
-          const res = await axios.post(
-            "http://localhost:8080/api/project/create",
-            projectData,
-            config
-          );
-          console.log(res);
+          try {
+            const res = await axios.post(
+              "http://localhost:8080/api/project/create",
+              projectData,
+              config
+            );
+            console.log(res);
+            if (res) {
+              const chatData = {
+                title: data.title,
+                type: tpye,
+                members: [{ email: user }],
+                projectId: res.data._id,
+              };
+              const createChat = await axios.post(
+                "http://localhost:8080/api/chat/create",
+                chatData,
+
+                config
+              );
+              console.log(createChat);
+            }
+          } catch (err) {
+            console.log(err);
+            return alert("생성하는 과정에서 오류가 발생하였습니다.");
+          }
+
           router.push("/Work");
         }
       } else {
@@ -112,12 +135,33 @@ const index = ({ state }) => {
         studyData.master !== undefined
       ) {
         if (user !== undefined) {
-          const res = await axios.post(
-            "http://localhost:8080/api/study/create",
-            studyData,
-            config
-          );
-          console.log(res);
+          try {
+            const res = await axios.post(
+              "http://localhost:8080/api/study/create",
+              studyData,
+              config
+            );
+            console.log(res);
+            if (res) {
+              const chatData = {
+                title: data.title,
+                type: tpye,
+                members: [{ email: user }],
+                projectId: res.data._id,
+              };
+              const createChat = await axios.post(
+                "http://localhost:8080/api/chat/create",
+                chatData,
+
+                config
+              );
+              console.log(createChat);
+            }
+          } catch (err) {
+            console.log(err);
+            return alert("생성하는 과정에서 오류가 발생하였습니다.");
+          }
+
           router.push("/Work");
         }
       } else {
