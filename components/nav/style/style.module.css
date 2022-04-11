@@ -32,6 +32,13 @@
 .modal .modalNav ul li {
   margin-bottom: 30px;
   text-align: center;
+  color: #fff;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.modal .modalNav ul li:hover {
+  color: greenyellow;
 }
 
 .modal .modalNav ul li a {
@@ -108,6 +115,17 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.navContainer .navWrap .mainNav .navUserMenu li {
+  margin: 0 15px;
+  color: #9f9c9c;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.navContainer .navWrap .mainNav .navUserMenu li:hover {
+  color: yellowgreen;
 }
 
 .navContainer .navWrap .mainNav .navUserMenu a {

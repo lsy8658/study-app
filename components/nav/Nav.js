@@ -104,9 +104,11 @@ const Nav = ({ state, login_out }) => {
                   removeCookie("accessToken");
                   login_out();
                   setUser("");
+                  window.location.reload();
                 }}
               >
-                <Link href={"/"}>Logout</Link>
+                Logout
+                {/* <Link href={"/"}>Logout</Link> */}
               </li>
             ) : (
               <li>
@@ -143,16 +145,18 @@ const Nav = ({ state, login_out }) => {
               {cookie.accessToken !== undefined ? (
                 <>
                   <Link href={`/Mypage/${getUser}`}>My page</Link>
-                  <div
+                  <li
                     onClick={() => {
                       removeCookie("accessToken");
                       removeCookie("refreshToken");
                       login_out();
                       setUser("");
+                      window.location.reload();
                     }}
                   >
-                    <Link href={"/"}>Logout</Link>
-                  </div>
+                    Logout
+                    {/* <Link href={"/"}></Link> */}
+                  </li>
                 </>
               ) : (
                 <div className={styles.navUserMenu}>
