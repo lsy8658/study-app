@@ -11,7 +11,7 @@ const index = () => {
     const newPro = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:8080/api/project/newProject"
+          "https://sy-study-app.herokuapp.com/api/project/newProject"
         );
         setNewProject(res.data);
       } catch (err) {
@@ -21,7 +21,9 @@ const index = () => {
     newPro();
     const newStu = async () => {
       try {
-        const res = await axios.get("http://localhost:8080/api/study/newStudy");
+        const res = await axios.get(
+          "https://sy-study-app.herokuapp.com/api/study/newStudy"
+        );
         setNewStudy(res.data);
       } catch (err) {
         console.log(err);
@@ -29,7 +31,7 @@ const index = () => {
     };
     newStu();
   }, []);
-  console.log(newProject);
+
   return (
     <>
       <Nav />
@@ -44,7 +46,7 @@ const index = () => {
                 const members = item.member_id.filter((member) => {
                   return member.waiting === true;
                 });
-                console.log(members);
+
                 return (
                   <div className={styles.studyRoom} key={index}>
                     <div className={styles.studyType}>
@@ -72,7 +74,7 @@ const index = () => {
                 const members = item.member_id.filter((member) => {
                   return member.waiting === true;
                 });
-                console.log(members);
+
                 return (
                   <div className={styles.studyRoom} key={index}>
                     <div className={styles.studyType}>

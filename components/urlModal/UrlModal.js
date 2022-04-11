@@ -30,7 +30,7 @@ const index = ({ setModalBg, urlModal, projectId, setUrlModal }) => {
     if (sliceClg === "http" && projectId !== "") {
       try {
         const res = await axios.put(
-          `http://localhost:8080/api/project/updateUrl/${projectId}`,
+          `https://sy-study-app.herokuapp.com/api/project/updateUrl/${projectId}`,
           { url: url },
           config
         );
@@ -47,7 +47,7 @@ const index = ({ setModalBg, urlModal, projectId, setUrlModal }) => {
   const noUrlHandle = async () => {
     try {
       const res = await axios.put(
-        `http://localhost:8080/api/project/updateUrl/${projectId}`,
+        `https://sy-study-app.herokuapp.com/api/project/updateUrl/${projectId}`,
         { url: "" },
         config
       );

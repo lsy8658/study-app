@@ -27,7 +27,7 @@ const index = ({ state, login_start, login_success, login_failure }) => {
     login_start();
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/auth/login",
+        "https://sy-study-app.herokuapp.com/api/auth/login",
         input
       );
 

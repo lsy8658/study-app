@@ -46,14 +46,12 @@ const index = ({ setModalBg, waiting, setStudyWaiting, waitData }) => {
 
   const refuseHandle = async (user) => {
     if (user) {
-      console.log(user);
       try {
         const res = await axios.post(
-          `http://localhost:8080/api/study/refuse/${projectId}`,
+          `https://sy-study-app.herokuapp.com/api/study/refuse/${projectId}`,
           { email: user },
           config
         );
-        console.log(res.data);
 
         window.location.reload();
       } catch (err) {
@@ -63,21 +61,20 @@ const index = ({ setModalBg, waiting, setStudyWaiting, waitData }) => {
   }; //거절
   const acceptHandle = async (user) => {
     if (user) {
-      console.log(user);
       try {
         const res = await axios.post(
-          `http://localhost:8080/api/study/accept/${projectId}`,
+          `https://sy-study-app.herokuapp.com/api/study/accept/${projectId}`,
           { email: user },
           config
         );
         console.log(res.data);
         const chat = { email: user, projectId: projectId };
         const participateChat = await axios.post(
-          `http://localhost:8080/api/chat/participate`,
+          `https://sy-study-app.herokuapp.com/api/chat/participate`,
           chat,
           config
         );
-        console.log(participateChat);
+
         window.location.reload();
       } catch (err) {
         console.log(err);
@@ -91,7 +88,7 @@ const index = ({ setModalBg, waiting, setStudyWaiting, waitData }) => {
       }
     }
   }, [memberTrue, headCount]);
-  console.log(memberTrue, headCount, match);
+
   return (
     <div
       className={styles.gradeBox}

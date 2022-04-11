@@ -21,9 +21,7 @@ const index = ({ state }) => {
   useEffect(() => {
     if (cookies.accessToken) {
       setUser(cookies.accessToken.decode.email);
-      console.log(cookies);
     }
-    console.log(user);
   }, [cookies.accessToken, user]);
 
   useEffect(() => {
@@ -43,14 +41,13 @@ const index = ({ state }) => {
   const tpyeSelect = (e) => {
     setType(e.target.value);
   };
-  console.log(tpye); //project인지 study인지 구분
+
   const [data, setData] = useState({});
 
   const inputHandle = (e) => {
     const { name, value } = e.target;
     setData({ ...data, [name]: value });
   };
-  console.log(data);
 
   const projectData = {
     area: data.area,
@@ -74,7 +71,6 @@ const index = ({ state }) => {
     title: data.title,
     master: user,
   };
-  console.log(studyData);
 
   const formHandle = async (e) => {
     e.preventDefault();
@@ -92,11 +88,11 @@ const index = ({ state }) => {
         if (user !== undefined) {
           try {
             const res = await axios.post(
-              "http://localhost:8080/api/project/create",
+              "https://sy-study-app.herokuapp.com/api/project/create",
               projectData,
               config
             );
-            console.log(res);
+
             if (res) {
               const chatData = {
                 title: data.title,
@@ -105,12 +101,11 @@ const index = ({ state }) => {
                 projectId: res.data._id,
               };
               const createChat = await axios.post(
-                "http://localhost:8080/api/chat/create",
+                "https://sy-study-app.herokuapp.com/api/chat/create",
                 chatData,
 
                 config
               );
-              console.log(createChat);
             }
           } catch (err) {
             console.log(err);
@@ -137,11 +132,11 @@ const index = ({ state }) => {
         if (user !== undefined) {
           try {
             const res = await axios.post(
-              "http://localhost:8080/api/study/create",
+              "https://sy-study-app.herokuapp.com/api/study/create",
               studyData,
               config
             );
-            console.log(res);
+
             if (res) {
               const chatData = {
                 title: data.title,
@@ -150,12 +145,11 @@ const index = ({ state }) => {
                 projectId: res.data._id,
               };
               const createChat = await axios.post(
-                "http://localhost:8080/api/chat/create",
+                "https://sy-study-app.herokuapp.com/api/chat/create",
                 chatData,
 
                 config
               );
-              console.log(createChat);
             }
           } catch (err) {
             console.log(err);

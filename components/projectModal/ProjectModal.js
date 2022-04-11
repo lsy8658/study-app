@@ -23,7 +23,7 @@ const index = ({ modal, setModal, data }) => {
         try {
           const getStudys = async () => {
             const res = await axios.post(
-              "http://localhost:8080/api/user/getUser",
+              "https://sy-study-app.herokuapp.com/api/user/getUser",
               email
             );
             setMaster(res.data[0]);
@@ -50,7 +50,7 @@ const index = ({ modal, setModal, data }) => {
         const email = { email: loginUser };
         try {
           const res = await axios.post(
-            "http://localhost:8080/api/user/getUser",
+            "https://sy-study-app.herokuapp.com/api/user/getUser",
             email
           );
           setUser(res.data[0]);
@@ -62,9 +62,9 @@ const index = ({ modal, setModal, data }) => {
     }
   }, [cookies.accessToken]);
   useEffect(() => {
-    console.log(desc);
-    console.log(master);
-    console.log(user);
+    // console.log(desc);
+    // console.log(master);
+    // console.log(user);
     if (desc.member_id) {
       const res = desc.member_id.filter((item) => {
         return item.user === user.email;
@@ -76,7 +76,7 @@ const index = ({ modal, setModal, data }) => {
       });
       setMemberLength(memberLength);
     }
-    console.log(waiting);
+    // console.log(waiting);
     if (master.grade) {
       const grades = master.grade.reduce(
         (prev, curr) => {
@@ -99,7 +99,7 @@ const index = ({ modal, setModal, data }) => {
     console.log(userData);
     try {
       const res = await axios.post(
-        `http://localhost:8080/api/project/participate/${desc._id}`,
+        `https://sy-study-app.herokuapp.com/api/project/participate/${desc._id}`,
         userData,
         config
       );
@@ -122,7 +122,7 @@ const index = ({ modal, setModal, data }) => {
 
       try {
         const res = await axios.post(
-          `http://localhost:8080/api/project/abandonment/${desc._id}`,
+          `https://sy-study-app.herokuapp.com/api/project/abandonment/${desc._id}`,
           email,
           config
         );
@@ -133,7 +133,7 @@ const index = ({ modal, setModal, data }) => {
 
       try {
         const exclude = await axios.post(
-          `http://localhost:8080/api/chat/exclude`,
+          `https://sy-study-app.herokuapp.com/api/chat/exclude`,
           {
             projectId: desc._id,
             email: loginUser,
@@ -160,7 +160,7 @@ const index = ({ modal, setModal, data }) => {
 
       try {
         const res = await axios.post(
-          `http://localhost:8080/api/project/projectAbandon/${desc._id}`,
+          `https://sy-study-app.herokuapp.com/api/project/projectAbandon/${desc._id}`,
           email,
           config
         );
@@ -171,7 +171,7 @@ const index = ({ modal, setModal, data }) => {
 
       try {
         const exclude = await axios.post(
-          `http://localhost:8080/api/chat/exclude`,
+          `https://sy-study-app.herokuapp.com/api/chat/exclude`,
           {
             projectId: desc._id,
             email: loginUser,

@@ -1,6 +1,6 @@
 @import "../../../styles/mixin.scss";
 .chatCon {
-  position: absolute;
+  position: fixed;
   bottom: 10%;
   right: 10%;
 
@@ -88,17 +88,20 @@
     }
     .chatRoomWrap {
       margin-top: 40px;
+
       .chatWindow {
         width: 100%;
         background: #fff;
         height: 300px;
         border-radius: 20px;
         overflow-y: scroll;
+        overflow-x: hidden;
         -ms-overflow-style: none; /* IE and Edge */
         scrollbar-width: none; /* Firefox */
         &::-webkit-scrollbar {
           display: none; /* Chrome, Safari, Opera*/
         }
+
         .chatItem {
           box-sizing: border-box;
           padding: 10px 10px;
@@ -135,7 +138,6 @@
             }
           }
           &.right {
-            float: right;
             .desc {
               align-items: flex-end;
               p {

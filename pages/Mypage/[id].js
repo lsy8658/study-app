@@ -7,9 +7,6 @@ import Seo from "../../components/Seo";
 import { connect } from "react-redux";
 import { useCookies } from "react-cookie";
 const index = ({ data, params }) => {
-  console.log(data);
-  console.log(params);
-
   const [cookies, setCookie, removeCookie] = useCookies(["accessToken"]);
   const [password, setPassword] = useState(""); //비밀번호
   const [pwCheck, setPwCheck] = useState(""); //비밀번호 재확인
@@ -22,9 +19,6 @@ const index = ({ data, params }) => {
 
   const [config, setConfig] = useState();
   const [getGrade, setGetGrade] = useState();
-  console.log(password);
-  console.log(pwCheck);
-  console.log(cookies);
 
   useEffect(() => {
     if (cookies.accessToken) {
@@ -56,27 +50,26 @@ const index = ({ data, params }) => {
   const passwordHandle = async (e) => {
     e.preventDefault();
     const userId = params.id;
-    if (password !== pwCheck) {
+    if (password === pwCheck && password !== "" && pwCheck !== "") {
+      if (cookies.accessToken) {
+        try {
+          console.log(userId);
+          const res = await axios.put(
+            `https://sy-study-app.herokuapp.com/api/user/password/${userId}`,
+            { password: password },
+            config
+          );
+          setMyPage(true);
+          setInfoModify(false);
+          setPwModify(false);
+        } catch (err) {
+          alert("토큰만료");
+          console.log(err);
+        }
+      }
+    } else {
       alert("암호를 확인해주세요.");
       return setInfoDisplay(true);
-    }
-
-    if (cookies.accessToken) {
-      try {
-        console.log(userId);
-        const res = await axios.put(
-          `http://localhost:8080/api/user/password/${userId}`,
-          { password: password },
-          config
-        );
-        setMyPage(true);
-        setInfoModify(false);
-        setPwModify(false);
-        console.log(res);
-      } catch (err) {
-        alert("토큰만료");
-        console.log(err);
-      }
     }
   };
 
@@ -139,7 +132,7 @@ const index = ({ data, params }) => {
     if (input.name !== "" && input.address !== "" && input.developer !== "") {
       try {
         const res = await axios.put(
-          `http://localhost:8080/api/user/modify/${userId}`,
+          `https://sy-study-app.herokuapp.com/api/user/modify/${userId}`,
           newUser,
           config
         );
@@ -364,7 +357,9 @@ export default connect(getReducerState)(index);
 export const getServerSideProps = async ({ params }) => {
   console.log(params);
 
-  const res = await axios.get(`http://localhost:8080/api/user/${params.id}`);
+  const res = await axios.get(
+    `https://sy-study-app.herokuapp.com/api/user/${params.id}`
+  );
   const data = res.data;
   return {
     props: { data: data, params },

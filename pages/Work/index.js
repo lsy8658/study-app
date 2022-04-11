@@ -50,7 +50,7 @@ const index = ({ state }) => {
       setConfig(config);
       setEmail(email);
     }
-    console.log(email);
+    // console.log(email);
   }, [cookies.accessToken, email]);
 
   useEffect(() => {
@@ -60,12 +60,12 @@ const index = ({ state }) => {
     if (cookies.accessToken) {
       const getProject = async () => {
         const projectRes = await axios.get(
-          "http://localhost:8080/api/project/getProject"
+          "https://sy-study-app.herokuapp.com/api/project/getProject"
         );
         // console.log(projectRes);
 
         const studyRes = await axios.get(
-          "http://localhost:8080/api/study/getStudy"
+          "https://sy-study-app.herokuapp.com/api/study/getStudy"
         );
         const progressData = projectRes.data;
         const studyData = studyRes.data;
@@ -123,7 +123,7 @@ const index = ({ state }) => {
       const email = cookies.accessToken.decode.email;
       const getMyProject = async () => {
         const participate = await axios.post(
-          "http://localhost:8080/api/project/myProject",
+          "https://sy-study-app.herokuapp.com/api/project/myProject",
           { email: email }
         );
 
@@ -136,7 +136,7 @@ const index = ({ state }) => {
 
       const mySuccessProject = async () => {
         const participate = await axios.post(
-          "http://localhost:8080/api/project/mySuccessProject",
+          "https://sy-study-app.herokuapp.com/api/project/mySuccessProject",
           { email: email }
         );
         // console.log(participate);
@@ -148,7 +148,7 @@ const index = ({ state }) => {
       mySuccessProject();
       const getMyStudy = async () => {
         const participate = await axios.post(
-          "http://localhost:8080/api/study/myStudy",
+          "https://sy-study-app.herokuapp.com/api/study/myStudy",
           { email: email }
         );
 
@@ -161,7 +161,7 @@ const index = ({ state }) => {
 
       const mySuccessStudy = async () => {
         const participate = await axios.post(
-          "http://localhost:8080/api/study/mySuccessStudy",
+          "https://sy-study-app.herokuapp.com/api/study/mySuccessStudy",
           { email: email }
         );
 
@@ -431,7 +431,7 @@ const index = ({ state }) => {
                                   e.preventDefault();
                                   if (item._id !== "") {
                                     const res = await axios.put(
-                                      `http://localhost:8080/api/study/studySuccess/${item._id}`,
+                                      `https://sy-study-app.herokuapp.com/api/study/studySuccess/${item._id}`,
                                       {},
                                       config
                                     );

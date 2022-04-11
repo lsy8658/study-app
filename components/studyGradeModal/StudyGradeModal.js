@@ -20,7 +20,7 @@ const index = ({ setModalBg, setStudyGrade, studyGrade, studyGradeItem }) => {
         },
       };
       setConfig(config);
-      console.log(accessToken);
+
       setEmail(user);
       if (studyGradeItem) {
         const memberFilter = studyGradeItem.member_id.filter((item) => {
@@ -30,10 +30,10 @@ const index = ({ setModalBg, setStudyGrade, studyGrade, studyGradeItem }) => {
       }
     }
   }, [studyGradeItem, cookies.accessToken, email]);
-  console.log(input);
+
   const formHandle = async (e) => {
     e.preventDefault();
-    console.log(studyGradeItem);
+
     if (Object.keys(input).length === member.length) {
       for (let i = 0; i <= member.length; i++) {
         const userKeys = Object.entries(input);
@@ -46,7 +46,7 @@ const index = ({ setModalBg, setStudyGrade, studyGrade, studyGradeItem }) => {
           };
           if (user) {
             const res = await axios.post(
-              "http://localhost:8080/api/project/evaluation",
+              "https://sy-study-app.herokuapp.com/api/project/evaluation",
               user,
               config
             );
@@ -61,11 +61,10 @@ const index = ({ setModalBg, setStudyGrade, studyGrade, studyGradeItem }) => {
             email: email,
           };
           const gradeButton = await axios.post(
-            `http://localhost:8080/api/project/gradeTrue/${studyGradeItem._id}`,
+            `https://sy-study-app.herokuapp.com/api/project/gradeTrue/${studyGradeItem._id}`,
             email,
             config
           );
-          console.log(gradeButton);
         }
         window.location.reload();
       } else {

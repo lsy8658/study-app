@@ -39,7 +39,7 @@ const Nav = ({ state, login_out }) => {
 
         try {
           const userId = await axios.post(
-            "http://localhost:8080/api/user/getUser",
+            "https://sy-study-app.herokuapp.com/api/user/getUser",
             {
               email,
             }

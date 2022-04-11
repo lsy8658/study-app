@@ -1,5 +1,5 @@
 .chatCon {
-  position: absolute;
+  position: fixed;
   bottom: 10%;
   right: 10%;
 }
@@ -117,6 +117,7 @@
   height: 300px;
   border-radius: 20px;
   overflow-y: scroll;
+  overflow-x: hidden;
   -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;
@@ -176,10 +177,6 @@
 
 .chatCon .chatRoom .chatRoomWrap .chatWindow .chatItem.left .desc span {
   margin-left: 5px;
-}
-
-.chatCon .chatRoom .chatRoomWrap .chatWindow .chatItem.right {
-  float: right;
 }
 
 .chatCon .chatRoom .chatRoomWrap .chatWindow .chatItem.right .desc {

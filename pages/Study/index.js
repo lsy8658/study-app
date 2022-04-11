@@ -14,7 +14,9 @@ const index = () => {
   const [newGetStudy, setNewGetStudy] = useState([]);
   useEffect(() => {
     const getStudys = async () => {
-      const res = await axios.get("http://localhost:8080/api/study/Studying");
+      const res = await axios.get(
+        "https://sy-study-app.herokuapp.com/api/study/Studying"
+      );
       setGetStudy(res.data);
     };
     getStudys();
@@ -28,18 +30,20 @@ const index = () => {
     if (search !== "") {
       try {
         const res = await axios.post(
-          "http://localhost:8080/api/study/search",
+          "https://sy-study-app.herokuapp.com/api/study/search",
           text
         );
         setGetStudy(res.data);
-        console.log(res.data);
+
         setSearch("");
       } catch (err) {
         console.log(err);
       }
     } else {
       try {
-        const res = await axios.get("http://localhost:8080/api/study/Studying");
+        const res = await axios.get(
+          "https://sy-study-app.herokuapp.com/api/study/Studying"
+        );
         setGetStudy(res.data);
         console.log(res.data);
       } catch (err) {
@@ -49,8 +53,6 @@ const index = () => {
   };
   return (
     <>
-      {/* <GradeModal /> */}
-
       <div className={styles.containerBox}>
         <Seo title={"Studyapp - Project"} />
         <Nav />

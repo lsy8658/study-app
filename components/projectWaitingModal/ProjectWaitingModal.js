@@ -52,7 +52,7 @@ const index = ({ setModalBg, waiting, setWaiting, waitData }) => {
       console.log(user);
       try {
         const res = await axios.post(
-          `http://localhost:8080/api/project/refuse/${projectId}`,
+          `https://sy-study-app.herokuapp.com/api/project/refuse/${projectId}`,
           { email: user },
           config
         );
@@ -68,14 +68,14 @@ const index = ({ setModalBg, waiting, setWaiting, waitData }) => {
       console.log(user);
       try {
         const res = await axios.post(
-          `http://localhost:8080/api/project/accept/${projectId}`,
+          `https://sy-study-app.herokuapp.com/api/project/accept/${projectId}`,
           { email: user },
           config
         );
         console.log(res.data);
         const chat = { email: user, projectId: projectId };
         const participateChat = await axios.post(
-          `http://localhost:8080/api/chat/participate`,
+          `https://sy-study-app.herokuapp.com/api/chat/participate`,
           chat,
           config
         );

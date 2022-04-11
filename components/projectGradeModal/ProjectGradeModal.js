@@ -25,7 +25,7 @@ const index = ({
         },
       };
       setConfig(config);
-      console.log(accessToken);
+
       setEmail(user);
       if (projectGradeItem) {
         const memberFilter = projectGradeItem.member_id.filter((item) => {
@@ -35,10 +35,9 @@ const index = ({
       }
     }
   }, [projectGradeItem, cookies.accessToken, email]);
-  console.log(input);
+
   const formHandle = async (e) => {
     e.preventDefault();
-    console.log(projectGradeItem);
 
     if (Object.keys(input).length === member.length) {
       for (let i = 0; i <= member.length; i++) {
@@ -52,7 +51,7 @@ const index = ({
           };
           if (user) {
             const res = await axios.post(
-              "http://localhost:8080/api/project/evaluation",
+              "https://sy-study-app.herokuapp.com/api/project/evaluation",
               user,
               config
             );
@@ -67,13 +66,11 @@ const index = ({
           email: cookies.accessToken.decode.email,
         };
 
-        console.log(email);
         const gradeButton = await axios.post(
-          `http://localhost:8080/api/project/gradeTrue/${projectGradeItem._id}`,
+          `https://sy-study-app.herokuapp.com/api/project/gradeTrue/${projectGradeItem._id}`,
           email,
           config
         );
-        console.log(gradeButton);
       } else {
         alert("email 에러");
         return;

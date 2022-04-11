@@ -12,7 +12,7 @@ const index = () => {
   useEffect(() => {
     const getStudys = async () => {
       const res = await axios.get(
-        "http://localhost:8080/api/project/Projecting"
+        "https://sy-study-app.herokuapp.com/api/project/Projecting"
       );
       setGetStudy(res.data);
     };
@@ -26,7 +26,7 @@ const index = () => {
     if (search !== "") {
       try {
         const res = await axios.post(
-          "http://localhost:8080/api/project/search",
+          "https://sy-study-app.herokuapp.com/api/project/search",
           text
         );
         setGetStudy(res.data);
@@ -38,7 +38,7 @@ const index = () => {
     } else {
       try {
         const res = await axios.get(
-          "http://localhost:8080/api/project/Projecting"
+          "https://sy-study-app.herokuapp.com/api/project/Projecting"
         );
         setGetStudy(res.data);
         console.log(res.data);
