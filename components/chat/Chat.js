@@ -103,6 +103,10 @@ const index = () => {
       await socket.emit("send_message", param);
       setMessageList((list) => [...list, param]);
       setChat("");
+      socket.on("receive_message", (data) => {
+        console.log(data);
+        setMessageList((list) => [...list, data]);
+      });
     }
   }; //채팅 보내기
 
