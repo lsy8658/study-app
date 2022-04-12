@@ -21,7 +21,11 @@ const index = ({ state, login_start, login_success, login_failure }) => {
     email: "",
     password: "",
   });
-
+  useEffect(() => {
+    if (cookies.accessToken) {
+      window.location.replace("/");
+    }
+  }, []);
   const formHandle = async (e) => {
     e.preventDefault();
     login_start();
