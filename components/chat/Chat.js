@@ -76,7 +76,7 @@ const index = () => {
       console.log(data);
       setMessageList((list) => [...list, data]);
     });
-  }, [socket, messageList]);
+  }, []);
   const sendMessage = async (e) => {
     e.preventDefault();
 
