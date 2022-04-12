@@ -212,6 +212,14 @@
   background: #a53030;
 }
 
+.containerBox .container .aside .modifyForm .modifyInput .address {
+  display: inline-block;
+  text-align: center;
+  color: #fff;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
 .containerBox .container .aside .modifyForm .btns {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -59,9 +59,11 @@ const index = ({ data, params }) => {
             { password: password },
             config
           );
-          setMyPage(true);
-          setInfoModify(false);
-          setPwModify(false);
+          // setMyPage(true);
+          // setInfoModify(false);
+          // setPwModify(false);
+          alert("비밀번호가 수정되었습니다.");
+          window.location.replace("/");
         } catch (err) {
           alert("토큰만료");
           console.log(err);
@@ -138,6 +140,8 @@ const index = ({ data, params }) => {
         );
         console.log(newUser);
         console.log(res);
+        alert("정보가 수정되었습니다.");
+        window.location.replace("/");
       } catch (err) {
         console.log(err);
       }

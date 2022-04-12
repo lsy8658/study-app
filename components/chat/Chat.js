@@ -23,14 +23,16 @@ const index = () => {
 
   useEffect(() => {
     if (cookies.accessToken) {
-      setEmail(cookies.accessToken.decode.email);
-      const accessToken = cookies.accessToken.user;
-      const config = {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      };
-      setConfig(config);
+      if (cookies.accessToken.decode) {
+        setEmail(cookies.accessToken.decode.email);
+        const accessToken = cookies.accessToken.user;
+        const config = {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        };
+        setConfig(config);
+      }
     }
   }, [cookies.accessToken]);
 
@@ -103,10 +105,6 @@ const index = () => {
       await socket.emit("send_message", param);
       setMessageList((list) => [...list, param]);
       setChat("");
-      socket.on("receive_message", (data) => {
-        console.log(data);
-        setMessageList((list) => [...list, data]);
-      });
     }
   }; //채팅 보내기
 

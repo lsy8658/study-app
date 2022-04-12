@@ -47,6 +47,8 @@ const index = ({ state, login_start, login_success, login_failure }) => {
     } catch (err) {
       login_failure();
       console.log(err);
+      alert("정보가 일치하지 않습니다.");
+      window.location.reload();
     }
   };
   const inputHandle = (e) => {

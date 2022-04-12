@@ -35,29 +35,27 @@ const Nav = ({ state, login_out }) => {
   useEffect(() => {
     const getUserFun = async () => {
       if (cookie.accessToken) {
-        const email = cookie.accessToken.decode.email;
+        if (cookie.accessToken.decode) {
+          const email = cookie.accessToken.decode.email;
 
-        try {
-          const userId = await axios.post(
-            "https://sy-study-app.herokuapp.com/api/user/getUser",
-            {
-              email,
-            }
-          );
-          setGetUser(userId.data[0]._id);
+          try {
+            const userId = await axios.post(
+              "https://sy-study-app.herokuapp.com/api/user/getUser",
+              {
+                email,
+              }
+            );
+            setGetUser(userId.data[0]._id);
 
-          // const res = await axios.post();
-        } catch (err) {
-          console.log(err);
+            // const res = await axios.post();
+          } catch (err) {
+            console.log(err);
+          }
         }
       }
     };
     getUserFun();
   }, [cookie.accessToken]);
-  // console.log(getUser);
-  // headers: {
-  //   authorization: `Bearer ${cookies.accessToken}`,
-  // },
 
   // ---------login user,cookie 정보 가져오기-------------
   return (
@@ -102,9 +100,10 @@ const Nav = ({ state, login_out }) => {
               <li
                 onClick={() => {
                   removeCookie("accessToken");
+                  removeCookie("refreshToken");
                   login_out();
                   setUser("");
-                  window.location.reload();
+                  window.location.replace("/");
                 }}
               >
                 Logout
@@ -151,7 +150,7 @@ const Nav = ({ state, login_out }) => {
                       removeCookie("refreshToken");
                       login_out();
                       setUser("");
-                      window.location.reload();
+                      window.location.replace("/");
                     }}
                   >
                     Logout
