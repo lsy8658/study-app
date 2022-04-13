@@ -1,0 +1,108 @@
+@import "../../../styles/mixin.scss";
+.infoContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 600px;
+  background: #45597e;
+  box-sizing: border-box;
+  padding: 30px;
+  border-radius: 20px;
+
+  .infoHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+
+    h2 {
+      font-size: 30px;
+      font-weight: normal;
+    }
+    .infoGrade {
+      font-size: 22px;
+      span {
+        display: inline-block;
+        color: #fc2b2b;
+      }
+    }
+  }
+  .infoTxt {
+    margin-top: 10px;
+    color: #fff;
+    font-size: 16px;
+  }
+  .infoProjectCon {
+    margin-top: 50px;
+    .infoProjectTitle {
+      color: #fff;
+      font-size: 24px;
+    }
+    .infoProjectWrap {
+      transition: 0.3s ease;
+      height: 250px;
+      overflow: scroll;
+      margin-top: 10px;
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+
+      &::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera*/
+      }
+      .infoProjectItem {
+        display: flex;
+        justify-content: space-between;
+        background: #fff;
+        border-radius: 20px;
+        box-sizing: border-box;
+        padding: 10px 20px;
+        margin-top: 15px;
+        p {
+          color: #5e5a5a;
+          width: 70%;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+        a {
+          width: 20%;
+          max-width: 80px;
+          color: #3548ed;
+          text-align: center;
+        }
+      }
+    }
+    .backButton {
+      margin-top: 30px;
+      text-align: center;
+      padding: 10px;
+      background: #000;
+      border-radius: 20px;
+      cursor: pointer;
+      a {
+        color: #fff;
+        display: block;
+      }
+    }
+  }
+}
+@include mobile {
+  .infoContainer {
+    .infoProjectCon {
+      .infoProjectWrap {
+        height: 200px;
+        overflow: scroll;
+        margin-top: 10px;
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+    }
+  }
+}
+
+@include tablet {
+}
+
+@include desktop {
+}

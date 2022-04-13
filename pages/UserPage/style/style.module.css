@@ -1,0 +1,129 @@
+.infoContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 600px;
+  background: #45597e;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.infoContainer .infoHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #fff;
+}
+
+.infoContainer .infoHeader h2 {
+  font-size: 30px;
+  font-weight: normal;
+}
+
+.infoContainer .infoHeader .infoGrade {
+  font-size: 22px;
+}
+
+.infoContainer .infoHeader .infoGrade span {
+  display: inline-block;
+  color: #fc2b2b;
+}
+
+.infoContainer .infoTxt {
+  margin-top: 10px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.infoContainer .infoProjectCon {
+  margin-top: 50px;
+}
+
+.infoContainer .infoProjectCon .infoProjectTitle {
+  color: #fff;
+  font-size: 24px;
+}
+
+.infoContainer .infoProjectCon .infoProjectWrap {
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  height: 250px;
+  overflow: scroll;
+  margin-top: 10px;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.infoContainer .infoProjectCon .infoProjectWrap::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Opera*/
+}
+
+.infoContainer .infoProjectCon .infoProjectWrap .infoProjectItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #fff;
+  border-radius: 20px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px 20px;
+  margin-top: 15px;
+}
+
+.infoContainer .infoProjectCon .infoProjectWrap .infoProjectItem p {
+  color: #5e5a5a;
+  width: 70%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.infoContainer .infoProjectCon .infoProjectWrap .infoProjectItem a {
+  width: 20%;
+  max-width: 80px;
+  color: #3548ed;
+  text-align: center;
+}
+
+.infoContainer .infoProjectCon .backButton {
+  margin-top: 30px;
+  text-align: center;
+  padding: 10px;
+  background: #000;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.infoContainer .infoProjectCon .backButton a {
+  color: #fff;
+  display: block;
+}
+
+@media (min-width: 319px) and (max-width: 757px) {
+  .infoContainer .infoProjectCon .infoProjectWrap {
+    height: 200px;
+    overflow: scroll;
+    margin-top: 10px;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+}
+/*# sourceMappingURL=style.module.css.map */

@@ -183,7 +183,7 @@ const index = ({ data, params }) => {
                   marginLeft: "5px",
                 }}
               >
-                {getGrade}
+                {isNaN(getGrade) !== true ? getGrade : ""}
               </span>
             </p>
 

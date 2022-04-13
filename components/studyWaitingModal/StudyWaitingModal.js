@@ -111,7 +111,7 @@ const index = ({ setModalBg, waiting, setStudyWaiting, waitData }) => {
               <div key={index}>
                 <div className={styles.gradeForm}>
                   <span>
-                    <Link href="/">{item.user}</Link>
+                    <Link href={`/UserPage/${item.user}`}>{item.user}</Link>
                   </span>
                   {match ? (
                     ""

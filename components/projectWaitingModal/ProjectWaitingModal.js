@@ -13,6 +13,7 @@ const index = ({ setModalBg, waiting, setWaiting, waitData }) => {
   const [headCount, setHeadCount] = useState();
   const [match, setMatch] = useState();
   const [getChatList, setGetChatList] = useState([]); //list 데이터
+  console.log(member);
   useEffect(() => {
     if (cookies.accessToken) {
       const accessToken = cookies.accessToken.user;
@@ -117,7 +118,7 @@ const index = ({ setModalBg, waiting, setWaiting, waitData }) => {
               <div key={index}>
                 <div className={styles.gradeForm}>
                   <span>
-                    <Link href="/">{item.user}</Link>
+                    <Link href={`/UserPage/${item.user}`}>{item.user}</Link>
                   </span>
 
                   {match ? (
