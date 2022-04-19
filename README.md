@@ -2,6 +2,7 @@
 <h1 style="text-align:center">☕ Study-Cafe ☕</h1>
 개발 모임을 찾는 사람들에게 쉽게 참여하고 대화할 수 있도록 만들어 주는 서비스
 </br>
+</br>
   <a href="https://lsy-project.tistory.com/" target="_blank">
     Study-Cafe 보러가기!
   </a>
