@@ -234,7 +234,7 @@ const index = () => {
             }}
           />
         </div>
-        {/* getChatList */}
+
         <div className={styles.chatRoomWrap}>
           <ScrollToBottom className={styles.chatWindow}>
             {chatData !== undefined &&

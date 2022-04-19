@@ -53,15 +53,12 @@ const index = ({ data, params }) => {
     if (password === pwCheck && password !== "" && pwCheck !== "") {
       if (cookies.accessToken) {
         try {
-          console.log(userId);
           const res = await axios.put(
             `https://sy-study-app.herokuapp.com/api/user/password/${userId}`,
             { password: password },
             config
           );
-          // setMyPage(true);
-          // setInfoModify(false);
-          // setPwModify(false);
+
           alert("비밀번호가 수정되었습니다.");
           window.location.replace("/");
         } catch (err) {
@@ -70,7 +67,6 @@ const index = ({ data, params }) => {
         }
       }
     } else {
-      alert("암호를 확인해주세요.");
       return setInfoDisplay(true);
     }
   };

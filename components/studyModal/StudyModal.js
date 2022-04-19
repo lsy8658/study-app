@@ -276,7 +276,7 @@ const index = ({ modal, setModal, data }) => {
                     marginBottom: "5px",
                   }}
                 >
-                  포기하시면 평점 2점과 Project가 사라집니다.
+                  포기하시면 평점 2점과 Study가 사라집니다.
                 </p>
                 <button className={styles.btn3} onClick={projectAbandonHandle}>
                   포기하기

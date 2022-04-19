@@ -28,16 +28,13 @@ const Layout = ({ children, login_success }) => {
                     token: cookies.refreshToken,
                   }
                 );
-                console.log(res.data);
+
                 removeCookie("accessToken");
                 setCookie("accessToken", {
                   user: res.data,
                   decode: jwt_decode(res.data),
                 });
-                // login_success({
-                //   user: res.data,
-                //   decode: jwt_decode(res.data),
-                // });
+
                 alert("토큰이 새로 발급되었습니다.");
               } catch (err) {
                 removeCookie("accessToken");
@@ -47,17 +44,11 @@ const Layout = ({ children, login_success }) => {
                 console.log(err);
               }
             }
-
-            console.log(decode.email);
-            console.log(cookies.refreshToken);
           };
           refreshToken();
         }
       }
-      console.log(cookies.refreshToken);
     }
-
-    console.log(decode);
   }, [cookies.accessToken, cookies, accessToken]);
 
   return (
