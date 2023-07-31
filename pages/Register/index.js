@@ -29,7 +29,7 @@ const index = () => {
 
     try {
       const res = await axios.post(
-        "https://sy-study-app.herokuapp.com/api/auth/register",
+        "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/auth/register",
         newUser
       );
       Router.push("/Login");

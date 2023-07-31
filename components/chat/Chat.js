@@ -5,7 +5,9 @@ import styles from "./style/style.module.css";
 import { useCookies } from "react-cookie";
 import axios from "axios";
 import ScrollToBottom from "react-scroll-to-bottom";
-const socket = io.connect("https://sy-study-app.herokuapp.com/");
+const socket = io.connect(
+  "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/"
+);
 
 const index = () => {
   const [email, setEmail] = useState("");
@@ -41,7 +43,7 @@ const index = () => {
       if (email !== undefined && config !== undefined) {
         try {
           const chatList = await axios.post(
-            "https://sy-study-app.herokuapp.com/api/chat/getList",
+            "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/chat/getList",
             {
               email: email,
             },
@@ -55,7 +57,7 @@ const index = () => {
       if (email !== undefined) {
         try {
           const data = await axios.post(
-            "https://sy-study-app.herokuapp.com/api/user/getUser",
+            "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/user/getUser",
             {
               email: email,
             }
@@ -94,7 +96,7 @@ const index = () => {
       };
       try {
         const sendChat = await axios.post(
-          "https://sy-study-app.herokuapp.com/api/chat/sendChat",
+          "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/chat/sendChat",
           param,
           config
         );
@@ -134,7 +136,7 @@ const index = () => {
     if (email !== undefined && config !== undefined) {
       try {
         const chatList = await axios.post(
-          "https://sy-study-app.herokuapp.com/api/chat/getList",
+          "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/chat/getList",
           {
             email: email,
           },
@@ -159,7 +161,7 @@ const index = () => {
             if (email !== undefined && config !== undefined) {
               try {
                 const chatList = await axios.post(
-                  "https://sy-study-app.herokuapp.com/api/chat/getList",
+                  "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/chat/getList",
                   {
                     email: email,
                   },

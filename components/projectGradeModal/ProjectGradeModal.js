@@ -51,7 +51,7 @@ const index = ({
           };
           if (user) {
             const res = await axios.post(
-              "https://sy-study-app.herokuapp.com/api/project/evaluation",
+              "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/project/evaluation",
               user,
               config
             );
@@ -67,7 +67,7 @@ const index = ({
         };
 
         const gradeButton = await axios.post(
-          `https://sy-study-app.herokuapp.com/api/project/gradeTrue/${projectGradeItem._id}`,
+          `https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/project/gradeTrue/${projectGradeItem._id}`,
           email,
           config
         );

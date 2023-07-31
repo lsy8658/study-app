@@ -40,7 +40,7 @@ const Nav = ({ state, login_out }) => {
 
           try {
             const userId = await axios.post(
-              "https://sy-study-app.herokuapp.com/api/user/getUser",
+              "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/user/getUser",
               {
                 email,
               }

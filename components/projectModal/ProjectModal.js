@@ -23,7 +23,7 @@ const index = ({ modal, setModal, data }) => {
         try {
           const getStudys = async () => {
             const res = await axios.post(
-              "https://sy-study-app.herokuapp.com/api/user/getUser",
+              "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/user/getUser",
               email
             );
             setMaster(res.data[0]);
@@ -50,7 +50,7 @@ const index = ({ modal, setModal, data }) => {
         const email = { email: loginUser };
         try {
           const res = await axios.post(
-            "https://sy-study-app.herokuapp.com/api/user/getUser",
+            "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/user/getUser",
             email
           );
           setUser(res.data[0]);
@@ -99,7 +99,7 @@ const index = ({ modal, setModal, data }) => {
     console.log(userData);
     try {
       const res = await axios.post(
-        `https://sy-study-app.herokuapp.com/api/project/participate/${desc._id}`,
+        `https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/project/participate/${desc._id}`,
         userData,
         config
       );
@@ -122,7 +122,7 @@ const index = ({ modal, setModal, data }) => {
 
       try {
         const res = await axios.post(
-          `https://sy-study-app.herokuapp.com/api/project/abandonment/${desc._id}`,
+          `https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/project/abandonment/${desc._id}`,
           email,
           config
         );
@@ -133,7 +133,7 @@ const index = ({ modal, setModal, data }) => {
 
       try {
         const exclude = await axios.post(
-          `https://sy-study-app.herokuapp.com/api/chat/exclude`,
+          `https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/chat/exclude`,
           {
             projectId: desc._id,
             email: loginUser,
@@ -160,7 +160,7 @@ const index = ({ modal, setModal, data }) => {
 
       try {
         const res = await axios.post(
-          `https://sy-study-app.herokuapp.com/api/project/projectAbandon/${desc._id}`,
+          `https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/project/projectAbandon/${desc._id}`,
           email,
           config
         );
@@ -171,7 +171,7 @@ const index = ({ modal, setModal, data }) => {
 
       try {
         const exclude = await axios.post(
-          `https://sy-study-app.herokuapp.com/api/chat/exclude`,
+          `https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/chat/exclude`,
           {
             projectId: desc._id,
             email: loginUser,

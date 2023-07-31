@@ -11,7 +11,7 @@ const index = () => {
     const newPro = async () => {
       try {
         const res = await axios.get(
-          "https://sy-study-app.herokuapp.com/api/project/newProject"
+          "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/project/newProject"
         );
         setNewProject(res.data);
       } catch (err) {
@@ -22,7 +22,7 @@ const index = () => {
     const newStu = async () => {
       try {
         const res = await axios.get(
-          "https://sy-study-app.herokuapp.com/api/study/newStudy"
+          "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/study/newStudy"
         );
         setNewStudy(res.data);
       } catch (err) {

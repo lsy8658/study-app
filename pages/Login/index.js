@@ -31,7 +31,7 @@ const index = ({ state, login_start, login_success, login_failure }) => {
     login_start();
     try {
       const res = await axios.post(
-        "https://sy-study-app.herokuapp.com/api/auth/login",
+        "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/auth/login",
         input
       );
 

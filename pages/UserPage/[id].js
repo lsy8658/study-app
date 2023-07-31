@@ -23,7 +23,7 @@ const index = ({ data }) => {
 
       const projects = async () => {
         const res = await axios.post(
-          "https://sy-study-app.herokuapp.com/api/project/mySuccessProject",
+          "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/project/mySuccessProject",
           {
             email: data.email,
           }
@@ -85,7 +85,7 @@ export const getServerSideProps = async ({ params }) => {
   console.log(params);
 
   const res = await axios.post(
-    "https://sy-study-app.herokuapp.com/api/user/getUser",
+    "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/user/getUser",
     {
       email: params.id,
     }

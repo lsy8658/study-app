@@ -48,7 +48,7 @@ const index = ({ setModalBg, waiting, setStudyWaiting, waitData }) => {
     if (user) {
       try {
         const res = await axios.post(
-          `https://sy-study-app.herokuapp.com/api/study/refuse/${projectId}`,
+          `https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/study/refuse/${projectId}`,
           { email: user },
           config
         );
@@ -63,14 +63,14 @@ const index = ({ setModalBg, waiting, setStudyWaiting, waitData }) => {
     if (user) {
       try {
         const res = await axios.post(
-          `https://sy-study-app.herokuapp.com/api/study/accept/${projectId}`,
+          `https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/study/accept/${projectId}`,
           { email: user },
           config
         );
         console.log(res.data);
         const chat = { email: user, projectId: projectId };
         const participateChat = await axios.post(
-          `https://sy-study-app.herokuapp.com/api/chat/participate`,
+          `https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/chat/participate`,
           chat,
           config
         );

@@ -46,7 +46,7 @@ const index = ({ setModalBg, setStudyGrade, studyGrade, studyGradeItem }) => {
           };
           if (user) {
             const res = await axios.post(
-              "https://sy-study-app.herokuapp.com/api/project/evaluation",
+              "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/project/evaluation",
               user,
               config
             );
@@ -61,7 +61,7 @@ const index = ({ setModalBg, setStudyGrade, studyGrade, studyGradeItem }) => {
             email: email,
           };
           const gradeButton = await axios.post(
-            `https://sy-study-app.herokuapp.com/api/project/gradeTrue/${studyGradeItem._id}`,
+            `https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/project/gradeTrue/${studyGradeItem._id}`,
             email,
             config
           );

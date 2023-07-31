@@ -12,7 +12,7 @@ const index = () => {
   useEffect(() => {
     const getStudys = async () => {
       const res = await axios.get(
-        "https://sy-study-app.herokuapp.com/api/project/Projecting"
+        "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/project/Projecting"
       );
       setGetStudy(res.data);
     };
@@ -26,7 +26,7 @@ const index = () => {
     if (search !== "") {
       try {
         const res = await axios.post(
-          "https://sy-study-app.herokuapp.com/api/project/search",
+          "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/project/search",
           text
         );
         setGetStudy(res.data);
@@ -38,7 +38,7 @@ const index = () => {
     } else {
       try {
         const res = await axios.get(
-          "https://sy-study-app.herokuapp.com/api/project/Projecting"
+          "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/project/Projecting"
         );
         setGetStudy(res.data);
         console.log(res.data);

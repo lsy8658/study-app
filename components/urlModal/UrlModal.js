@@ -30,7 +30,7 @@ const index = ({ setModalBg, urlModal, projectId, setUrlModal }) => {
     if (sliceClg === "http" && projectId !== "") {
       try {
         const res = await axios.put(
-          `https://sy-study-app.herokuapp.com/api/project/updateUrl/${projectId}`,
+          `https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/project/updateUrl/${projectId}`,
           { url: url },
           config
         );
@@ -47,7 +47,7 @@ const index = ({ setModalBg, urlModal, projectId, setUrlModal }) => {
   const noUrlHandle = async () => {
     try {
       const res = await axios.put(
-        `https://sy-study-app.herokuapp.com/api/project/updateUrl/${projectId}`,
+        `https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/project/updateUrl/${projectId}`,
         { url: "" },
         config
       );

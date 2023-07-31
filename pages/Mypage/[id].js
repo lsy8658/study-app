@@ -54,7 +54,7 @@ const index = ({ data, params }) => {
       if (cookies.accessToken) {
         try {
           const res = await axios.put(
-            `https://sy-study-app.herokuapp.com/api/user/password/${userId}`,
+            `https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/user/password/${userId}`,
             { password: password },
             config
           );
@@ -130,7 +130,7 @@ const index = ({ data, params }) => {
     if (input.name !== "" && input.address !== "" && input.developer !== "") {
       try {
         const res = await axios.put(
-          `https://sy-study-app.herokuapp.com/api/user/modify/${userId}`,
+          `https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/user/modify/${userId}`,
           newUser,
           config
         );
@@ -358,7 +358,7 @@ export const getServerSideProps = async ({ params }) => {
   console.log(params);
 
   const res = await axios.get(
-    `https://sy-study-app.herokuapp.com/api/user/${params.id}`
+    `https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/user/${params.id}`
   );
   const data = res.data;
   return {

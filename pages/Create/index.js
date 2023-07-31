@@ -88,7 +88,7 @@ const index = ({ state }) => {
         if (user !== undefined) {
           try {
             const res = await axios.post(
-              "https://sy-study-app.herokuapp.com/api/project/create",
+              "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/project/create",
               projectData,
               config
             );
@@ -101,7 +101,7 @@ const index = ({ state }) => {
                 projectId: res.data._id,
               };
               const createChat = await axios.post(
-                "https://sy-study-app.herokuapp.com/api/chat/create",
+                "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/chat/create",
                 chatData,
 
                 config
@@ -132,7 +132,7 @@ const index = ({ state }) => {
         if (user !== undefined) {
           try {
             const res = await axios.post(
-              "https://sy-study-app.herokuapp.com/api/study/create",
+              "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/study/create",
               studyData,
               config
             );
@@ -145,7 +145,7 @@ const index = ({ state }) => {
                 projectId: res.data._id,
               };
               const createChat = await axios.post(
-                "https://sy-study-app.herokuapp.com/api/chat/create",
+                "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/chat/create",
                 chatData,
 
                 config

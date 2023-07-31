@@ -60,12 +60,12 @@ const index = ({ state }) => {
     if (cookies.accessToken) {
       const getProject = async () => {
         const projectRes = await axios.get(
-          "https://sy-study-app.herokuapp.com/api/project/getProject"
+          "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/project/getProject"
         );
         // console.log(projectRes);
 
         const studyRes = await axios.get(
-          "https://sy-study-app.herokuapp.com/api/study/getStudy"
+          "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/study/getStudy"
         );
         const progressData = projectRes.data;
         const studyData = studyRes.data;
@@ -123,7 +123,7 @@ const index = ({ state }) => {
       const email = cookies.accessToken.decode.email;
       const getMyProject = async () => {
         const participate = await axios.post(
-          "https://sy-study-app.herokuapp.com/api/project/myProject",
+          "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/project/myProject",
           { email: email }
         );
 
@@ -136,7 +136,7 @@ const index = ({ state }) => {
 
       const mySuccessProject = async () => {
         const participate = await axios.post(
-          "https://sy-study-app.herokuapp.com/api/project/mySuccessProject",
+          "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/project/mySuccessProject",
           { email: email }
         );
         // console.log(participate);
@@ -148,7 +148,7 @@ const index = ({ state }) => {
       mySuccessProject();
       const getMyStudy = async () => {
         const participate = await axios.post(
-          "https://sy-study-app.herokuapp.com/api/study/myStudy",
+          "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/study/myStudy",
           { email: email }
         );
 
@@ -161,7 +161,7 @@ const index = ({ state }) => {
 
       const mySuccessStudy = async () => {
         const participate = await axios.post(
-          "https://sy-study-app.herokuapp.com/api/study/mySuccessStudy",
+          "https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/study/mySuccessStudy",
           { email: email }
         );
 
@@ -431,7 +431,7 @@ const index = ({ state }) => {
                                   e.preventDefault();
                                   if (item._id !== "") {
                                     const res = await axios.put(
-                                      `https://sy-study-app.herokuapp.com/api/study/studySuccess/${item._id}`,
+                                      `https://port-0-study-app-server-ac2nlkqinq1x.sel4.cloudtype.app/api/study/studySuccess/${item._id}`,
                                       {},
                                       config
                                     );
