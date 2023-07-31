@@ -30,7 +30,7 @@ const Nav = ({ state, login_out }) => {
     }
   }, [cookie.accessToken, user]);
   // console.log(cookie.accessToken && cookie.accessToken.decode.email);
-  // ---------user 값 가져와서 menu설정-------------
+  // ---------user 값 가져와서 menu설정------------
 
   useEffect(() => {
     const getUserFun = async () => {
