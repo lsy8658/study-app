@@ -5,20 +5,20 @@
   width: 85%;
   margin: 0 auto;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 100px 0 0;
 }
 
 .container .aside {
   -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }
 
 .container .aside h1,
 .container .aside h2 {
   text-align: center;
-  color: #9f9c9c;
+  color: cadetblue;
 }
 
 .container .aside h1 {
@@ -52,25 +52,25 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .container .aside .studyRooms .studyRoom .studyInfo {
   width: 90%;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .container .aside .studyRooms .studyRoom .studyInfo .studyTitle {
@@ -98,8 +98,8 @@
 
 .container .mainBox {
   -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -ms-flex: 1;
+  flex: 1;
 }
 
 .container .mainBox .mainBg {
@@ -108,7 +108,7 @@
   max-width: 500px;
   max-height: 300px;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 
 .container .mainBox .mainBg img {
@@ -123,18 +123,18 @@
     width: 90%;
     margin: 0 auto;
     -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     padding: 80px 0 0;
   }
   .container .aside {
     -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+    -ms-flex: 1;
+    flex: 1;
   }
   .container .aside h1,
   .container .aside h2 {
     text-align: center;
-    color: #9f9c9c;
+    color: cadetblue;
   }
   .container .aside h1 {
     margin-bottom: 30px;
@@ -168,18 +168,18 @@
     width: 85%;
     margin: 0 auto;
     -webkit-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
     padding: 100px 0 0;
   }
   .container .aside {
     -webkit-box-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+    -ms-flex: 1;
+    flex: 1;
   }
   .container .aside h1,
   .container .aside h2 {
     text-align: center;
-    color: #9f9c9c;
+    color: cadetblue;
   }
   .container .aside h1 {
     margin-bottom: 30px;

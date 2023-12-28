@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 import { useEffect } from "react";
 const index = ({ user }) => {
   return (
-    <div>
+    <html lang="ko">
       <Seo title={"Studyapp - home"} />
       <Home />
-    </div>
+    </html>
   );
 };
 

@@ -18,8 +18,8 @@
 
 .container .workContainer .aside {
   -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
+  -ms-flex: 2;
+  flex: 2;
 }
 
 .container .workContainer .aside .contents {
@@ -35,11 +35,11 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .container .workContainer .aside .btns .menuBtn {
@@ -80,7 +80,7 @@
 }
 
 .container .workContainer .aside .listCon .listWrap h2 {
-  color: #9f9c9c;
+  color: cadetblue;
   margin-bottom: 30px;
 }
 
@@ -90,18 +90,33 @@
   overflow-y: scroll;
 }
 
-.container .workContainer .aside .listCon .listWrap .listBox::-webkit-scrollbar {
+.container
+  .workContainer
+  .aside
+  .listCon
+  .listWrap
+  .listBox::-webkit-scrollbar {
   width: 10px;
 }
 
-.container .workContainer .aside .listCon .listWrap .listBox::-webkit-scrollbar-track {
+.container
+  .workContainer
+  .aside
+  .listCon
+  .listWrap
+  .listBox::-webkit-scrollbar-track {
   background-color: #dbdedb;
 }
 
-.container .workContainer .aside .listCon .listWrap .listBox::-webkit-scrollbar-thumb {
+.container
+  .workContainer
+  .aside
+  .listCon
+  .listWrap
+  .listBox::-webkit-scrollbar-thumb {
   background: #a5d7b0;
   -webkit-box-shadow: inset 0 0 6px rgba(46, 169, 152, 0.3);
-          box-shadow: inset 0 0 6px rgba(46, 169, 152, 0.3);
+  box-shadow: inset 0 0 6px rgba(46, 169, 152, 0.3);
 }
 
 .container .workContainer .aside .listCon .listWrap .listBox .item {
@@ -125,8 +140,8 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .container .workContainer .aside .listCon .listWrap .listBox .item .waiting p {
@@ -134,36 +149,45 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 5px;
   text-align: center;
   width: 100%;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
-.container .workContainer .aside .listCon .listWrap .listBox .item .waiting p span {
+.container
+  .workContainer
+  .aside
+  .listCon
+  .listWrap
+  .listBox
+  .item
+  .waiting
+  p
+  span {
   margin-left: 5px;
 }
 
 .container .workContainer .aside .listCon .listWrap .listBox .item .desc {
   -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
+  -ms-flex: 2;
+  flex: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   color: #5e5a5a;
   padding: 20px 0;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
 }
 
 .container .workContainer .aside .listCon .listWrap .listBox .item .desc p {
@@ -174,24 +198,57 @@
   text-overflow: ellipsis;
 }
 
-.container .workContainer .aside .listCon .listWrap .listBox .item .desc .btns1 {
+.container
+  .workContainer
+  .aside
+  .listCon
+  .listWrap
+  .listBox
+  .item
+  .desc
+  .btns1 {
   text-align: center;
   color: #59595a;
 }
 
-.container .workContainer .aside .listCon .listWrap .listBox .item .desc .btns1 button {
+.container
+  .workContainer
+  .aside
+  .listCon
+  .listWrap
+  .listBox
+  .item
+  .desc
+  .btns1
+  button {
   font-size: 14px;
   margin: 5px 20px;
 }
 
-.container .workContainer .aside .listCon .listWrap .listBox .item .desc button {
+.container
+  .workContainer
+  .aside
+  .listCon
+  .listWrap
+  .listBox
+  .item
+  .desc
+  button {
   text-align: center;
   color: #59595a;
   font-size: 14px;
   font-weight: bold;
 }
 
-.container .workContainer .aside .listCon .listWrap .listBox .item .desc button:hover {
+.container
+  .workContainer
+  .aside
+  .listCon
+  .listWrap
+  .listBox
+  .item
+  .desc
+  button:hover {
   color: #1f30c0;
 }
 
@@ -210,18 +267,33 @@
   overflow-y: scroll;
 }
 
-.container .workContainer .aside .listCon .listWrap .studyListBox::-webkit-scrollbar {
+.container
+  .workContainer
+  .aside
+  .listCon
+  .listWrap
+  .studyListBox::-webkit-scrollbar {
   width: 10px;
 }
 
-.container .workContainer .aside .listCon .listWrap .studyListBox::-webkit-scrollbar-track {
+.container
+  .workContainer
+  .aside
+  .listCon
+  .listWrap
+  .studyListBox::-webkit-scrollbar-track {
   background-color: #dbdedb;
 }
 
-.container .workContainer .aside .listCon .listWrap .studyListBox::-webkit-scrollbar-thumb {
+.container
+  .workContainer
+  .aside
+  .listCon
+  .listWrap
+  .studyListBox::-webkit-scrollbar-thumb {
   background: #c9c2f8;
   -webkit-box-shadow: inset 0 0 6px rgba(46, 169, 152, 0.3);
-          box-shadow: inset 0 0 6px rgba(46, 169, 152, 0.3);
+  box-shadow: inset 0 0 6px rgba(46, 169, 152, 0.3);
 }
 
 .container .workContainer .aside .listCon .listWrap .studyListBox .item {
@@ -235,7 +307,14 @@
   margin-bottom: 20px;
 }
 
-.container .workContainer .aside .listCon .listWrap .studyListBox .item .waiting {
+.container
+  .workContainer
+  .aside
+  .listCon
+  .listWrap
+  .studyListBox
+  .item
+  .waiting {
   width: 100px;
   color: #fff;
   background: #c9c2f8;
@@ -245,48 +324,73 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
-.container .workContainer .aside .listCon .listWrap .studyListBox .item .waiting p {
+.container
+  .workContainer
+  .aside
+  .listCon
+  .listWrap
+  .studyListBox
+  .item
+  .waiting
+  p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   padding: 5px;
   text-align: center;
   width: 100%;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
-.container .workContainer .aside .listCon .listWrap .studyListBox .item .waiting p span {
+.container
+  .workContainer
+  .aside
+  .listCon
+  .listWrap
+  .studyListBox
+  .item
+  .waiting
+  p
+  span {
   margin-left: 5px;
 }
 
 .container .workContainer .aside .listCon .listWrap .studyListBox .item .desc {
   -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
+  -ms-flex: 2;
+  flex: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   color: #5e5a5a;
   padding: 20px 0;
   -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
 }
 
-.container .workContainer .aside .listCon .listWrap .studyListBox .item .desc p {
+.container
+  .workContainer
+  .aside
+  .listCon
+  .listWrap
+  .studyListBox
+  .item
+  .desc
+  p {
   width: 200px;
   text-align: center;
   white-space: nowrap;
@@ -294,31 +398,64 @@
   text-overflow: ellipsis;
 }
 
-.container .workContainer .aside .listCon .listWrap .studyListBox .item .desc .btns1 {
+.container
+  .workContainer
+  .aside
+  .listCon
+  .listWrap
+  .studyListBox
+  .item
+  .desc
+  .btns1 {
   text-align: center;
   color: #59595a;
 }
 
-.container .workContainer .aside .listCon .listWrap .studyListBox .item .desc .btns1 button {
+.container
+  .workContainer
+  .aside
+  .listCon
+  .listWrap
+  .studyListBox
+  .item
+  .desc
+  .btns1
+  button {
   font-size: 14px;
   margin: 0 20px;
 }
 
-.container .workContainer .aside .listCon .listWrap .studyListBox .item .desc button {
+.container
+  .workContainer
+  .aside
+  .listCon
+  .listWrap
+  .studyListBox
+  .item
+  .desc
+  button {
   text-align: center;
   color: #59595a;
   font-size: 14px;
   font-weight: bold;
 }
 
-.container .workContainer .aside .listCon .listWrap .studyListBox .item .desc button:hover {
+.container
+  .workContainer
+  .aside
+  .listCon
+  .listWrap
+  .studyListBox
+  .item
+  .desc
+  button:hover {
   color: #1f30c0;
 }
 
 .container .workContainer .sideBg {
   -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -ms-flex: 1;
+  flex: 1;
   background: url("/assets/img/bg/5.jpg");
   background-size: cover;
   background-repeat: no-repeat;
